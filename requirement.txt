@@ -1,0 +1,15 @@
+# LLM & RAG
+llama-cpp-python
+langchain
+chromadb
+sentence-transformers
+
+# Geospatial
+geopandas
+rasterio
+pyyaml
+gdal # Note: GDAL can be tricky. Using conda is often easier.
+
+# Web App
+streamlit
+leafmap

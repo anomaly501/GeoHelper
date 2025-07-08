@@ -1,0 +1,14 @@
+Function: geopandas.read_file(filename, **kwargs)
+Description: Reads a vector file from a file path or URL. Returns a GeoDataFrame. Key parameters include 'filename' (the path to the file) and 'layer' (for multi-layer files like GPKG).
+
+Function: GeoDataFrame.to_file(filename, driver='ESRI Shapefile', **kwargs)
+Description: Writes the GeoDataFrame to a file. The 'filename' is the output path. The 'driver' specifies the format, e.g., 'ESRI Shapefile', 'GeoJSON', or 'GPKG'.
+
+Function: GeoDataFrame.to_crs(crs)
+Description: Transforms the coordinate reference system (CRS) of the GeoDataFrame to a new one. The 'crs' parameter can be an EPSG code like 'EPSG:4326' or a Proj string. This is crucial for aligning datasets.
+
+Function: GeoDataFrame.buffer(distance, resolution=16)
+Description: Creates a buffer polygon around each geometry in the GeoDataFrame. The 'distance' is in the units of the CRS. It's often necessary to project the data to a projected CRS (like UTM) before buffering to use meters as units. Returns a GeoSeries of buffered geometries.
+
+Function: geopandas.overlay(gdf1, gdf2, how='intersection', **kwargs)
+Description: Performs a spatial overlay between two GeoDataFrames. The 'how' parameter can be 'intersection', 'union', 'identity', 'symmetric_difference', or 'difference'. The two GeoDataFrames must have the same CRS. Returns a new GeoDataFrame with the result of the overlay.
