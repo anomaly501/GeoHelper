@@ -9,11 +9,6 @@ An AI agent that functions as a GIS co-pilot, interpreting natural language, gen
 
 ---
 
-## 🎥 Demo
-
-*A short GIF demonstrating the workflow: user enters a query, the AI generates a plan, executes it, and displays the result on a map.*
-
-> 🔧 *Placeholder: Add a GIF showcasing your app in action.*
 
 ---
 
@@ -62,7 +57,6 @@ A modular, multi-stage architecture mimicking a GIS expert’s reasoning:
 - CoT log and YAML displayed
 - Outputs available for download
 
-> 🔧 *Placeholder: Add an architecture diagram here.*
 
 ---
 
@@ -84,4 +78,90 @@ A modular, multi-stage architecture mimicking a GIS expert’s reasoning:
 ```bash
 git clone https://github.com/anomaly501/GeoHelper.git
 cd GeoHelper
-# GeoHelper
+```
+
+#### 2. Set Up the Environment
+
+```bash
+# Using Conda (Recommended)
+conda create -n geo_llm python=3.11 -y
+conda activate geo_llm
+
+# Install core geospatial dependencies
+conda install -c conda-forge gdal geopandas rasterio -y
+```
+
+#### 3. Install Python Dependencies
+
+**For GPU Users (CUDA):**
+
+```bash
+# Windows
+set CMAKE_ARGS="-DLLAMA_CUBLAS=on"
+set FORCE_CMAKE=1
+
+# macOS/Linux
+export CMAKE_ARGS="-DLLAMA_CUBLAS=on"
+export FORCE_CMAKE=1
+
+pip install -r requirements.txt
+```
+
+**For CPU-Only Users:**
+
+```bash
+pip install -r requirements.txt
+```
+
+#### 4. Download the LLM Model
+
+```bash
+mkdir models
+# Download: Mistral-7B-Instruct-v0.2.Q4_K_M.gguf (~4.37GB)
+# Place it inside the models/ directory.
+```
+
+#### 5. Build the RAG Knowledge Base
+
+```bash
+python llm/knowledge_base/build_kb.py
+```
+
+---
+
+## ▶️ Running the App
+
+```bash
+conda activate geo_llm
+streamlit run app/main.py
+```
+
+Your browser will open with the application ready to use!
+
+---
+
+## 🧪 Example Prompts
+
+- "Find low-lying areas (elevation < 100m) within 2km of rivers."
+- "Identify new park sites not within 500m of highways."
+- "Buffer all roads by 50m and export to GeoJSON."
+
+---
+
+## 🤝 Contributing
+
+We welcome contributions of all kinds:
+
+```bash
+# Example workflow
+git checkout -b feature/YourFeature
+git commit -m "Add new feature"
+git push origin feature/YourFeature
+```
+
+Then submit a Pull Request with a clear description.
+
+---
+
+
+
