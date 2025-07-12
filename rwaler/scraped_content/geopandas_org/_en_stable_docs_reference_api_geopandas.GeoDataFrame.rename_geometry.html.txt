@@ -1,0 +1,117 @@
+Documentation
+API reference
+GeoDataFrame
+geopandas.GeoDataFrame.rename_geometry
+geopandas.GeoDataFrame.rename_geometry
+#
+GeoDataFrame.
+rename_geometry
+(
+col
+,
+inplace
+=
+False
+)
+[source]
+#
+Rename the GeoDataFrame geometry column to the specified name.
+By default yields a new object.
+The original geometry column is replaced with the input.
+Parameters
+:
+col
+new geometry column label
+inplace
+boolean, default False
+Modify the GeoDataFrame in place (do not create a new object)
+See also
+GeoDataFrame.set_geometry
+set the active geometry
+Examples
+>>>
+from
+shapely.geometry
+import
+Point
+>>>
+d
+=
+{
+'col1'
+:
+[
+'name1'
+,
+'name2'
+],
+'geometry'
+:
+[
+Point
+(
+1
+,
+2
+),
+Point
+(
+2
+,
+1
+)]}
+>>>
+df
+=
+geopandas
+.
+GeoDataFrame
+(
+d
+,
+crs
+=
+"EPSG:4326"
+)
+>>>
+df1
+=
+df
+.
+rename_geometry
+(
+'geom1'
+)
+>>>
+df1
+.
+geometry
+.
+name
+'geom1'
+>>>
+df
+.
+rename_geometry
+(
+'geom1'
+,
+inplace
+=
+True
+)
+>>>
+df
+.
+geometry
+.
+name
+'geom1'
+previous
+geopandas.GeoDataFrame.estimate_utm_crs
+next
+geopandas.GeoDataFrame.set_geometry
+On this page
+GeoDataFrame.rename_geometry()
+This Page
+Show Source

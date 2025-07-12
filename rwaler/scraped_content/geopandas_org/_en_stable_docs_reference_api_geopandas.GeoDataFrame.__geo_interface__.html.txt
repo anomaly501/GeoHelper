@@ -1,0 +1,92 @@
+Documentation
+API reference
+GeoDataFrame
+geopandas.GeoDataFrame.__geo_interface__
+geopandas.GeoDataFrame.__geo_interface__
+#
+property
+GeoDataFrame.
+__geo_interface__
+[source]
+#
+Returns a
+GeoDataFrame
+as a python feature collection.
+Implements the
+geo_interface
+. The returned python data structure
+represents the
+GeoDataFrame
+as a GeoJSON-like
+FeatureCollection
+.
+This differs from
+to_geo_dict()
+only in that it is a property with
+default args instead of a method.
+CRS of the dataframe is not passed on to the output, unlike
+to_json()
+.
+Examples
+>>>
+from
+shapely.geometry
+import
+Point
+>>>
+d
+=
+{
+'col1'
+:
+[
+'name1'
+,
+'name2'
+],
+'geometry'
+:
+[
+Point
+(
+1
+,
+2
+),
+Point
+(
+2
+,
+1
+)]}
+>>>
+gdf
+=
+geopandas
+.
+GeoDataFrame
+(
+d
+,
+crs
+=
+"EPSG:4326"
+)
+>>>
+gdf
+col1     geometry
+0  name1  POINT (1 2)
+1  name2  POINT (2 1)
+>>>
+gdf
+.
+__geo_interface__
+{'type': 'FeatureCollection', 'features': [{'id': '0', 'type': 'Feature', 'properties': {'col1': 'name1'}, 'geometry': {'type': 'Point', 'coordinates': (1.0, 2.0)}, 'bbox': (1.0, 2.0, 1.0, 2.0)}, {'id': '1', 'type': 'Feature', 'properties': {'col1': 'name2'}, 'geometry': {'type': 'Point', 'coordinates': (2.0, 1.0)}, 'bbox': (2.0, 1.0, 2.0, 1.0)}], 'bbox': (1.0, 1.0, 2.0, 2.0)}
+previous
+geopandas.GeoDataFrame.cx
+next
+geopandas.GeoDataFrame.iterfeatures
+On this page
+GeoDataFrame.__geo_interface__
+This Page
+Show Source

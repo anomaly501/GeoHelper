@@ -1,0 +1,82 @@
+Documentation
+API reference
+GeoSeries
+geopandas.GeoSeries.is_empty
+geopandas.GeoSeries.is_empty
+#
+property
+GeoSeries.
+is_empty
+[source]
+#
+Returns a
+Series
+of
+dtype('bool')
+with value
+True
+for
+empty geometries.
+See also
+GeoSeries.isna
+detect missing values
+Examples
+An example of a GeoDataFrame with one empty point, one point and one missing
+value:
+>>>
+from
+shapely.geometry
+import
+Point
+>>>
+d
+=
+{
+'geometry'
+:
+[
+Point
+(),
+Point
+(
+2
+,
+1
+),
+None
+]}
+>>>
+gdf
+=
+geopandas
+.
+GeoDataFrame
+(
+d
+,
+crs
+=
+"EPSG:4326"
+)
+>>>
+gdf
+geometry
+0  POINT EMPTY
+1  POINT (2 1)
+2         None
+>>>
+gdf
+.
+is_empty
+0     True
+1    False
+2    False
+dtype: bool
+previous
+geopandas.GeoSeries.is_closed
+next
+geopandas.GeoSeries.is_ring
+On this page
+GeoSeries.is_empty
+This Page
+Show Source

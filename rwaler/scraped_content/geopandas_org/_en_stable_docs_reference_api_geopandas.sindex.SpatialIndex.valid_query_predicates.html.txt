@@ -1,0 +1,56 @@
+Documentation
+API reference
+Spatial index
+geopandas.sindex.SpatialIndex.valid_query_predicates
+geopandas.sindex.SpatialIndex.valid_query_predicates
+#
+property
+SpatialIndex.
+valid_query_predicates
+[source]
+#
+Returns valid predicates for the spatial index.
+Returns
+:
+set
+Set of valid predicates for this spatial index.
+Examples
+>>>
+from
+shapely.geometry
+import
+Point
+>>>
+s
+=
+geopandas
+.
+GeoSeries
+([
+Point
+(
+0
+,
+0
+),
+Point
+(
+1
+,
+1
+)])
+>>>
+s
+.
+sindex
+.
+valid_query_predicates
+{None, "contains", "contains_properly", "covered_by", "covers", "crosses", "dwithin", "intersects", "overlaps", "touches", "within"}
+previous
+geopandas.sindex.SpatialIndex.size
+next
+Testing
+On this page
+SpatialIndex.valid_query_predicates
+This Page
+Show Source

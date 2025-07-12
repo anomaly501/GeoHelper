@@ -1,0 +1,81 @@
+Documentation
+API reference
+GeoSeries
+geopandas.GeoSeries.to_wkt
+geopandas.GeoSeries.to_wkt
+#
+GeoSeries.
+to_wkt
+(
+**
+kwargs
+)
+[source]
+#
+Convert GeoSeries geometries to WKT.
+Parameters
+:
+kwargs
+Keyword args will be passed to
+shapely.to_wkt()
+.
+Returns
+:
+Series
+WKT representations of the geometries
+See also
+GeoSeries.to_wkb
+Examples
+>>>
+from
+shapely.geometry
+import
+Point
+>>>
+s
+=
+geopandas
+.
+GeoSeries
+([
+Point
+(
+1
+,
+1
+),
+Point
+(
+2
+,
+2
+),
+Point
+(
+3
+,
+3
+)])
+>>>
+s
+0    POINT (1 1)
+1    POINT (2 2)
+2    POINT (3 3)
+dtype: geometry
+>>>
+s
+.
+to_wkt
+()
+0    POINT (1 1)
+1    POINT (2 2)
+2    POINT (3 3)
+dtype: object
+previous
+geopandas.GeoSeries.to_wkb
+next
+geopandas.GeoSeries.crs
+On this page
+GeoSeries.to_wkt()
+This Page
+Show Source

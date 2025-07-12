@@ -1,0 +1,131 @@
+Documentation
+API reference
+GeoSeries
+geopandas.GeoSeries.interpolate
+geopandas.GeoSeries.interpolate
+#
+GeoSeries.
+interpolate
+(
+distance
+,
+normalized
+=
+False
+)
+[source]
+#
+Return a point at the specified distance along each geometry.
+Parameters
+:
+distance
+float or Series of floats
+Distance(s) along the geometries at which a point should be
+returned. If np.array or pd.Series are used then it must have
+same length as the GeoSeries.
+normalized
+boolean
+If normalized is True, distance will be interpreted as a fraction
+of the geometric object’s length.
+Examples
+>>>
+from
+shapely.geometry
+import
+LineString
+,
+Point
+>>>
+s
+=
+geopandas
+.
+GeoSeries
+(
+...
+[
+...
+LineString
+([(
+0
+,
+0
+),
+(
+2
+,
+0
+),
+(
+0
+,
+2
+)]),
+...
+LineString
+([(
+0
+,
+0
+),
+(
+2
+,
+2
+)]),
+...
+LineString
+([(
+2
+,
+0
+),
+(
+0
+,
+2
+)]),
+...
+],
+...
+)
+>>>
+s
+0    LINESTRING (0 0, 2 0, 0 2)
+1         LINESTRING (0 0, 2 2)
+2         LINESTRING (2 0, 0 2)
+dtype: geometry
+>>>
+s
+.
+interpolate
+(
+1
+)
+0                POINT (1 0)
+1    POINT (0.70711 0.70711)
+2    POINT (1.29289 0.70711)
+dtype: geometry
+>>>
+s
+.
+interpolate
+([
+1
+,
+2
+,
+3
+])
+0                POINT (1 0)
+1    POINT (1.41421 1.41421)
+2                POINT (0 2)
+dtype: geometry
+previous
+geopandas.GeoSeries.translate
+next
+geopandas.GeoSeries.line_merge
+On this page
+GeoSeries.interpolate()
+This Page
+Show Source

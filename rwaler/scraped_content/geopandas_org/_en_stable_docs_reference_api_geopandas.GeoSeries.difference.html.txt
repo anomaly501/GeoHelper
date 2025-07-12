@@ -1,0 +1,302 @@
+Documentation
+API reference
+GeoSeries
+geopandas.GeoSeries.difference
+geopandas.GeoSeries.difference
+#
+GeoSeries.
+difference
+(
+other
+,
+align
+=
+None
+)
+[source]
+#
+Return a
+GeoSeries
+of the points in each aligned geometry that
+are not in
+other
+.
+The operation works on a 1-to-1 row-wise manner:
+Parameters
+:
+other
+Geoseries or geometric object
+The Geoseries (elementwise) or geometric object to find the
+difference to.
+align
+bool | None (default None)
+If True, automatically aligns GeoSeries based on their indices.
+If False, the order of elements is preserved. None defaults to True.
+Returns
+:
+GeoSeries
+See also
+GeoSeries.symmetric_difference
+GeoSeries.union
+GeoSeries.intersection
+Examples
+>>>
+from
+shapely.geometry
+import
+Polygon
+,
+LineString
+,
+Point
+>>>
+s
+=
+geopandas
+.
+GeoSeries
+(
+...
+[
+...
+Polygon
+([(
+0
+,
+0
+),
+(
+2
+,
+2
+),
+(
+0
+,
+2
+)]),
+...
+Polygon
+([(
+0
+,
+0
+),
+(
+2
+,
+2
+),
+(
+0
+,
+2
+)]),
+...
+LineString
+([(
+0
+,
+0
+),
+(
+2
+,
+2
+)]),
+...
+LineString
+([(
+2
+,
+0
+),
+(
+0
+,
+2
+)]),
+...
+Point
+(
+0
+,
+1
+),
+...
+],
+...
+)
+>>>
+s2
+=
+geopandas
+.
+GeoSeries
+(
+...
+[
+...
+Polygon
+([(
+0
+,
+0
+),
+(
+1
+,
+1
+),
+(
+0
+,
+1
+)]),
+...
+LineString
+([(
+1
+,
+0
+),
+(
+1
+,
+3
+)]),
+...
+LineString
+([(
+2
+,
+0
+),
+(
+0
+,
+2
+)]),
+...
+Point
+(
+1
+,
+1
+),
+...
+Point
+(
+0
+,
+1
+),
+...
+],
+...
+index
+=
+range
+(
+1
+,
+6
+),
+...
+)
+>>>
+s
+0    POLYGON ((0 0, 2 2, 0 2, 0 0))
+1    POLYGON ((0 0, 2 2, 0 2, 0 0))
+2             LINESTRING (0 0, 2 2)
+3             LINESTRING (2 0, 0 2)
+4                       POINT (0 1)
+dtype: geometry
+>>>
+s2
+1    POLYGON ((0 0, 1 1, 0 1, 0 0))
+2             LINESTRING (1 0, 1 3)
+3             LINESTRING (2 0, 0 2)
+4                       POINT (1 1)
+5                       POINT (0 1)
+dtype: geometry
+We can do difference of each geometry and a single
+shapely geometry:
+>>>
+s
+.
+difference
+(
+Polygon
+([(
+0
+,
+0
+),
+(
+1
+,
+1
+),
+(
+0
+,
+1
+)]))
+0       POLYGON ((0 2, 2 2, 1 1, 0 1, 0 2))
+1         POLYGON ((0 2, 2 2, 1 1, 0 1, 0 2))
+2                       LINESTRING (1 1, 2 2)
+3    MULTILINESTRING ((2 0, 1 1), (1 1, 0 2))
+4                                 POINT EMPTY
+dtype: geometry
+We can also check two GeoSeries against each other, row by row.
+The GeoSeries above have different indices. We can either align both GeoSeries
+based on index values and compare elements with the same index using
+align=True
+or ignore index and compare elements based on their matching
+order using
+align=False
+:
+>>>
+s
+.
+difference
+(
+s2
+,
+align
+=
+True
+)
+0                                        None
+1         POLYGON ((0 2, 2 2, 1 1, 0 1, 0 2))
+2    MULTILINESTRING ((0 0, 1 1), (1 1, 2 2))
+3                            LINESTRING EMPTY
+4                                 POINT (0 1)
+5                                        None
+dtype: geometry
+>>>
+s
+.
+difference
+(
+s2
+,
+align
+=
+False
+)
+0         POLYGON ((0 2, 2 2, 1 1, 0 1, 0 2))
+1    POLYGON ((0 0, 0 2, 1 2, 2 2, 1 1, 0 0))
+2    MULTILINESTRING ((0 0, 1 1), (1 1, 2 2))
+3                       LINESTRING (2 0, 0 2)
+4                                 POINT EMPTY
+dtype: geometry
+previous
+geopandas.GeoSeries.clip_by_rect
+next
+geopandas.GeoSeries.intersection
+On this page
+GeoSeries.difference()
+This Page
+Show Source

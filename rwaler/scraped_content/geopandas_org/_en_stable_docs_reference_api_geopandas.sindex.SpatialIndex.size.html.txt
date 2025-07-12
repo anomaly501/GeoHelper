@@ -1,0 +1,66 @@
+Documentation
+API reference
+Spatial index
+geopandas.sindex.SpatialIndex.size
+geopandas.sindex.SpatialIndex.size
+#
+property
+SpatialIndex.
+size
+[source]
+#
+Size of the spatial index.
+Number of leaves (input geometries) in the index.
+Examples
+>>>
+from
+shapely.geometry
+import
+Point
+>>>
+s
+=
+geopandas
+.
+GeoSeries
+(
+geopandas
+.
+points_from_xy
+(
+range
+(
+10
+),
+range
+(
+10
+)))
+>>>
+s
+0    POINT (0 0)
+1    POINT (1 1)
+2    POINT (2 2)
+3    POINT (3 3)
+4    POINT (4 4)
+5    POINT (5 5)
+6    POINT (6 6)
+7    POINT (7 7)
+8    POINT (8 8)
+9    POINT (9 9)
+dtype: geometry
+>>>
+s
+.
+sindex
+.
+size
+10
+previous
+geopandas.sindex.SpatialIndex.query
+next
+geopandas.sindex.SpatialIndex.valid_query_predicates
+On this page
+SpatialIndex.size
+This Page
+Show Source

@@ -1,0 +1,41 @@
+Documentation
+API reference
+GeoDataFrame
+geopandas.GeoDataFrame.to_wkb
+geopandas.GeoDataFrame.to_wkb
+#
+GeoDataFrame.
+to_wkb
+(
+hex
+=
+False
+,
+**
+kwargs
+)
+[source]
+#
+Encode all geometry columns in the GeoDataFrame to WKB.
+Parameters
+:
+hex
+bool
+If true, export the WKB as a hexadecimal string.
+The default is to return a binary bytes object.
+kwargs
+Additional keyword args will be passed to
+shapely.to_wkb()
+.
+Returns
+:
+DataFrame
+geometry columns are encoded to WKB
+previous
+geopandas.GeoDataFrame.to_postgis
+next
+geopandas.GeoDataFrame.to_wkt
+On this page
+GeoDataFrame.to_wkb()
+This Page
+Show Source

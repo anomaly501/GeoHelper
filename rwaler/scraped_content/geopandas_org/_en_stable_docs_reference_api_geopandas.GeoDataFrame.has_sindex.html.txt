@@ -1,0 +1,85 @@
+Documentation
+API reference
+GeoDataFrame
+geopandas.GeoDataFrame.has_sindex
+geopandas.GeoDataFrame.has_sindex
+#
+property
+GeoDataFrame.
+has_sindex
+[source]
+#
+Check the existence of the spatial index without generating it.
+Use the
+.sindex
+attribute on a GeoDataFrame or GeoSeries
+to generate a spatial index if it does not yet exist,
+which may take considerable time based on the underlying index
+implementation.
+Note that the underlying spatial index may not be fully
+initialized until the first use.
+Returns
+:
+bool
+True
+if the spatial index has been generated or
+False
+if not.
+Examples
+>>>
+from
+shapely.geometry
+import
+Point
+>>>
+d
+=
+{
+'geometry'
+:
+[
+Point
+(
+1
+,
+2
+),
+Point
+(
+2
+,
+1
+)]}
+>>>
+gdf
+=
+geopandas
+.
+GeoDataFrame
+(
+d
+)
+>>>
+gdf
+.
+has_sindex
+False
+>>>
+index
+=
+gdf
+.
+sindex
+>>>
+gdf
+.
+has_sindex
+True
+previous
+geopandas.GeoDataFrame.sindex
+next
+geopandas.GeoDataFrame.cx
+On this page
+GeoDataFrame.has_sindex
+This Page
+Show Source

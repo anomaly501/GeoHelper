@@ -1,0 +1,1544 @@
+Documentation
+API reference
+GeoSeries
+geopandas.GeoSeries
+geopandas.GeoSeries
+#
+class
+geopandas.
+GeoSeries
+(
+data
+=
+None
+,
+index
+=
+None
+,
+crs
+=
+None
+,
+**
+kwargs
+)
+[source]
+#
+A Series object designed to store shapely geometry objects.
+Parameters
+:
+data
+array-like, dict, scalar value
+The geometries to store in the GeoSeries.
+index
+array-like or Index
+The index for the GeoSeries.
+crs
+value (optional)
+Coordinate Reference System of the geometry objects. Can be anything accepted by
+pyproj.CRS.from_user_input()
+,
+such as an authority string (eg “EPSG:4326”) or a WKT string.
+kwargs
+Additional arguments passed to the Series constructor,
+e.g.
+name
+.
+See also
+GeoDataFrame
+pandas.Series
+Examples
+>>>
+from
+shapely.geometry
+import
+Point
+>>>
+s
+=
+geopandas
+.
+GeoSeries
+([
+Point
+(
+1
+,
+1
+),
+Point
+(
+2
+,
+2
+),
+Point
+(
+3
+,
+3
+)])
+>>>
+s
+0    POINT (1 1)
+1    POINT (2 2)
+2    POINT (3 3)
+dtype: geometry
+>>>
+s
+=
+geopandas
+.
+GeoSeries
+(
+...
+[
+Point
+(
+1
+,
+1
+),
+Point
+(
+2
+,
+2
+),
+Point
+(
+3
+,
+3
+)],
+crs
+=
+"EPSG:3857"
+...
+)
+>>>
+s
+.
+crs
+<Projected CRS: EPSG:3857>
+Name: WGS 84 / Pseudo-Mercator
+Axis Info [cartesian]:
+- X[east]: Easting (metre)
+- Y[north]: Northing (metre)
+Area of Use:
+- name: World - 85°S to 85°N
+- bounds: (-180.0, -85.06, 180.0, 85.06)
+Coordinate Operation:
+- name: Popular Visualisation Pseudo-Mercator
+- method: Popular Visualisation Pseudo Mercator
+Datum: World Geodetic System 1984
+- Ellipsoid: WGS 84
+- Prime Meridian: Greenwich
+>>>
+s
+=
+geopandas
+.
+GeoSeries
+(
+...
+[
+Point
+(
+1
+,
+1
+),
+Point
+(
+2
+,
+2
+),
+Point
+(
+3
+,
+3
+)],
+index
+=
+[
+"a"
+,
+"b"
+,
+"c"
+],
+crs
+=
+4326
+...
+)
+>>>
+s
+a    POINT (1 1)
+b    POINT (2 2)
+c    POINT (3 3)
+dtype: geometry
+>>>
+s
+.
+crs
+<Geographic 2D CRS: EPSG:4326>
+Name: WGS 84
+Axis Info [ellipsoidal]:
+- Lat[north]: Geodetic latitude (degree)
+- Lon[east]: Geodetic longitude (degree)
+Area of Use:
+- name: World.
+- bounds: (-180.0, -90.0, 180.0, 90.0)
+Datum: World Geodetic System 1984 ensemble
+- Ellipsoid: WGS 84
+- Prime Meridian: Greenwich
+__init__
+(
+data
+=
+None
+,
+index
+=
+None
+,
+crs
+=
+None
+,
+**
+kwargs
+)
+[source]
+#
+Methods
+__init__
+([data, index, crs])
+abs
+()
+Return a Series/DataFrame with absolute numeric value of each element.
+add
+(other[, level, fill_value, axis])
+Return Addition of series and other, element-wise (binary operator
+add
+).
+add_prefix
+(prefix[, axis])
+Prefix labels with string
+prefix
+.
+add_suffix
+(suffix[, axis])
+Suffix labels with string
+suffix
+.
+affine_transform
+(matrix)
+Return a
+GeoSeries
+with translated geometries.
+agg
+([func, axis])
+Aggregate using one or more operations over the specified axis.
+aggregate
+([func, axis])
+Aggregate using one or more operations over the specified axis.
+align
+(other[, join, axis, level, copy, ...])
+Align two objects on their axes with the specified join method.
+all
+([axis, bool_only, skipna])
+Return whether all elements are True, potentially over an axis.
+any
+(*[, axis, bool_only, skipna])
+Return whether any element is True, potentially over an axis.
+apply
+(func[, convert_dtype, args])
+One-dimensional ndarray with axis labels (including time series).
+argmax
+([axis, skipna])
+Return int position of the largest value in the Series.
+argmin
+([axis, skipna])
+Return int position of the smallest value in the Series.
+argsort
+([axis, kind, order, stable])
+Return the integer indices that would sort the Series values.
+asfreq
+(freq[, method, how, normalize, ...])
+Convert time series to specified frequency.
+asof
+(where[, subset])
+Return the last row(s) without any NaNs before
+where
+.
+astype
+(dtype[, copy, errors])
+Cast a pandas object to a specified dtype
+dtype
+.
+at_time
+(time[, asof, axis])
+Select values at particular time of day (e.g., 9:30AM).
+autocorr
+([lag])
+Compute the lag-N autocorrelation.
+backfill
+(*[, axis, inplace, limit, downcast])
+Fill NA/NaN values by using the next valid observation to fill the gap.
+between
+(left, right[, inclusive])
+Return boolean Series equivalent to left <= series <= right.
+between_time
+(start_time, end_time[, ...])
+Select values between particular times of the day (e.g., 9:00-9:30 AM).
+bfill
+(*[, axis, inplace, limit, limit_area, ...])
+Fill NA/NaN values by using the next valid observation to fill the gap.
+bool
+()
+Return the bool of a single element Series or DataFrame.
+buffer
+(distance[, resolution, cap_style, ...])
+Return a
+GeoSeries
+of geometries representing all points within a given
+distance
+of each geometric object.
+build_area
+([node])
+Create an areal geometry formed by the constituent linework.
+case_when
+(caselist)
+Replace values where the conditions are True.
+clip
+(mask[, keep_geom_type, sort])
+Clip points, lines, or polygon geometries to the mask extent.
+clip_by_rect
+(xmin, ymin, xmax, ymax)
+Return a
+GeoSeries
+of the portions of geometry within the given rectangle.
+combine
+(other, func[, fill_value])
+Combine the Series with a Series or scalar according to
+func
+.
+combine_first
+(other)
+Update null elements with value in the same location in 'other'.
+compare
+(other[, align_axis, keep_shape, ...])
+Compare to another Series and show the differences.
+concave_hull
+([ratio, allow_holes])
+Return a
+GeoSeries
+of geometries representing the concave hull of vertices of each geometry.
+constrained_delaunay_triangles
+()
+Return a
+GeoSeries
+with the constrained Delaunay triangulation of polygons.
+contains
+(other[, align])
+Return a
+Series
+of
+dtype('bool')
+with value
+True
+for each aligned geometry that contains
+other
+.
+contains_properly
+(other[, align])
+Return a
+Series
+of
+dtype('bool')
+with value
+True
+for each aligned geometry that is completely inside
+other
+, with no common boundary points.
+convert_dtypes
+([infer_objects, ...])
+Convert columns to the best possible dtypes using dtypes supporting
+pd.NA
+.
+copy
+([deep])
+Make a copy of this object's indices and data.
+corr
+(other[, method, min_periods])
+Compute correlation with
+other
+Series, excluding missing values.
+count
+()
+Return number of non-NA/null observations in the Series.
+count_coordinates
+()
+Return a
+Series
+containing the count of the number of coordinate pairs in each geometry.
+count_geometries
+()
+Return a
+Series
+containing the count of geometries in each multi-part geometry.
+count_interior_rings
+()
+Return a
+Series
+containing the count of the number of interior rings in a polygonal geometry.
+cov
+(other[, min_periods, ddof])
+Compute covariance with Series, excluding missing values.
+covered_by
+(other[, align])
+Return a
+Series
+of
+dtype('bool')
+with value
+True
+for each aligned geometry that is entirely covered by
+other
+.
+covers
+(other[, align])
+Return a
+Series
+of
+dtype('bool')
+with value
+True
+for each aligned geometry that is entirely covering
+other
+.
+crosses
+(other[, align])
+Return a
+Series
+of
+dtype('bool')
+with value
+True
+for each aligned geometry that cross
+other
+.
+cummax
+([axis, skipna])
+Return cumulative maximum over a DataFrame or Series axis.
+cummin
+([axis, skipna])
+Return cumulative minimum over a DataFrame or Series axis.
+cumprod
+([axis, skipna])
+Return cumulative product over a DataFrame or Series axis.
+cumsum
+([axis, skipna])
+Return cumulative sum over a DataFrame or Series axis.
+delaunay_triangles
+([tolerance, only_edges])
+Return a
+GeoSeries
+consisting of objects representing the computed Delaunay triangulation between the vertices of an input geometry.
+describe
+([percentiles, include, exclude])
+Generate descriptive statistics.
+diff
+([periods])
+First discrete difference of element.
+difference
+(other[, align])
+Return a
+GeoSeries
+of the points in each aligned geometry that are not in
+other
+.
+disjoint
+(other[, align])
+Return a
+Series
+of
+dtype('bool')
+with value
+True
+for each aligned geometry disjoint to
+other
+.
+distance
+(other[, align])
+Return a
+Series
+containing the distance to aligned
+other
+.
+div
+(other[, level, fill_value, axis])
+Return Floating division of series and other, element-wise (binary operator
+truediv
+).
+divide
+(other[, level, fill_value, axis])
+Return Floating division of series and other, element-wise (binary operator
+truediv
+).
+divmod
+(other[, level, fill_value, axis])
+Return Integer division and modulo of series and other, element-wise (binary operator
+divmod
+).
+dot
+(other)
+Compute the dot product between the Series and the columns of other.
+drop
+([labels, axis, index, columns, level, ...])
+Return Series with specified index labels removed.
+drop_duplicates
+(*[, keep, inplace, ignore_index])
+Return Series with duplicate values removed.
+droplevel
+(level[, axis])
+Return Series/DataFrame with requested index / column level(s) removed.
+dropna
+(*[, axis, inplace, how, ignore_index])
+Return a new Series with missing values removed.
+duplicated
+([keep])
+Indicate duplicate Series values.
+dwithin
+(other, distance[, align])
+Return a
+Series
+of
+dtype('bool')
+with value
+True
+for each aligned geometry that is within a set distance from
+other
+.
+eq
+(other[, level, fill_value, axis])
+Return Equal to of series and other, element-wise (binary operator
+eq
+).
+equals
+(other)
+Test whether two objects contain the same elements.
+estimate_utm_crs
+([datum_name])
+Return the estimated UTM CRS based on the bounds of the dataset.
+ewm
+([com, span, halflife, alpha, ...])
+Provide exponentially weighted (EW) calculations.
+expanding
+([min_periods, axis, method])
+Provide expanding window calculations.
+explode
+([ignore_index, index_parts])
+Explode multi-part geometries into multiple single geometries.
+explore
+(*args, **kwargs)
+Explore with an interactive map based on folium/leaflet.js.Interactive map based on GeoPandas and folium/leaflet.js.
+extract_unique_points
+()
+Return a
+GeoSeries
+of MultiPoints representing all distinct vertices of an input geometry.
+factorize
+([sort, use_na_sentinel])
+Encode the object as an enumerated type or categorical variable.
+ffill
+(*[, axis, inplace, limit, limit_area, ...])
+Fill NA/NaN values by propagating the last valid observation to next valid.
+fillna
+([value, inplace, limit])
+Fill NA values with geometry (or geometries).
+filter
+([items, like, regex, axis])
+Subset the dataframe rows or columns according to the specified index labels.
+first
+(offset)
+Select initial periods of time series data based on a date offset.
+first_valid_index
+()
+Return index for first non-NA value or None, if no non-NA value is found.
+floordiv
+(other[, level, fill_value, axis])
+Return Integer division of series and other, element-wise (binary operator
+floordiv
+).
+force_2d
+()
+Force the dimensionality of a geometry to 2D.
+force_3d
+([z])
+Force the dimensionality of a geometry to 3D.
+frechet_distance
+(other[, align, densify])
+Return a
+Series
+containing the Frechet distance to aligned
+other
+.
+from_arrow
+(arr, **kwargs)
+Construct a GeoSeries from a Arrow array object with a GeoArrow extension type.
+from_file
+(filename, **kwargs)
+Alternate constructor to create a
+GeoSeries
+from a file.
+from_wkb
+(data[, index, crs, on_invalid])
+Alternate constructor to create a
+GeoSeries
+from a list or array of WKB objects.
+from_wkt
+(data[, index, crs, on_invalid])
+Alternate constructor to create a
+GeoSeries
+from a list or array of WKT objects.
+from_xy
+(x, y[, z, index, crs])
+Alternate constructor to create a
+GeoSeries
+of Point geometries from lists or arrays of x, y(, z) coordinates.
+ge
+(other[, level, fill_value, axis])
+Return Greater than or equal to of series and other, element-wise (binary operator
+ge
+).
+geom_equals
+(other[, align])
+Return a
+Series
+of
+dtype('bool')
+with value
+True
+for each aligned geometry equal to
+other
+.
+geom_equals_exact
+(other, tolerance[, align])
+Return True for all geometries that equal aligned
+other
+to a given tolerance, else False.
+geom_equals_identical
+(other[, align])
+Return True for all geometries that are identical aligned
+other
+, else False.
+get
+(key[, default])
+Get item from object for given key (ex: DataFrame column).
+get_coordinates
+([include_z, ignore_index, ...])
+Get coordinates from a
+GeoSeries
+as a
+DataFrame
+of floats.
+get_geometry
+(index)
+Return the n-th geometry from a collection of geometries.
+get_precision
+()
+Return a
+Series
+of the precision of each geometry.
+groupby
+([by, axis, level, as_index, sort, ...])
+Group Series using a mapper or by a Series of columns.
+gt
+(other[, level, fill_value, axis])
+Return Greater than of series and other, element-wise (binary operator
+gt
+).
+hausdorff_distance
+(other[, align, densify])
+Return a
+Series
+containing the Hausdorff distance to aligned
+other
+.
+head
+([n])
+Return the first
+n
+rows.
+hilbert_distance
+([total_bounds, level])
+Calculate the distance along a Hilbert curve.
+hist
+([by, ax, grid, xlabelsize, xrot, ...])
+Draw histogram of the input series using matplotlib.
+idxmax
+([axis, skipna])
+Return the row label of the maximum value.
+idxmin
+([axis, skipna])
+Return the row label of the minimum value.
+infer_objects
+([copy])
+Attempt to infer better dtypes for object columns.
+info
+([verbose, buf, max_cols, memory_usage, ...])
+Print a concise summary of a Series.
+interpolate
+(distance[, normalized])
+Return a point at the specified distance along each geometry.
+intersection
+(other[, align])
+Return a
+GeoSeries
+of the intersection of points in each aligned geometry with
+other
+.
+intersection_all
+()
+Return a geometry containing the intersection of all geometries in the
+GeoSeries
+.
+intersects
+(other[, align])
+Return a
+Series
+of
+dtype('bool')
+with value
+True
+for each aligned geometry that intersects
+other
+.
+invalid_coverage_edges
+(*[, gap_width])
+Return a
+GeoSeries
+containing edges causing invalid polygonal coverage.
+is_valid_coverage
+(*[, gap_width])
+Return a
+bool
+indicating whether a
+GeoSeries
+forms a valid coverage.
+is_valid_reason
+()
+Return a
+Series
+of strings with the reason for invalidity of each geometry.
+isin
+(values)
+Whether elements in Series are contained in
+values
+.
+isna
+()
+Detect missing values.
+isnull
+()
+Alias for
+isna
+method.
+item
+()
+Return the first element of the underlying data as a Python scalar.
+items
+()
+Lazily iterate over (index, value) tuples.
+keys
+()
+Return alias for index.
+kurt
+([axis, skipna, numeric_only])
+Return unbiased kurtosis over requested axis.
+kurtosis
+([axis, skipna, numeric_only])
+Return unbiased kurtosis over requested axis.
+last
+(offset)
+Select final periods of time series data based on a date offset.
+last_valid_index
+()
+Return index for last non-NA value or None, if no non-NA value is found.
+le
+(other[, level, fill_value, axis])
+Return Less than or equal to of series and other, element-wise (binary operator
+le
+).
+line_merge
+([directed])
+Return (Multi)LineStrings formed by combining the lines in a MultiLineString.
+lt
+(other[, level, fill_value, axis])
+Return Less than of series and other, element-wise (binary operator
+lt
+).
+make_valid
+(*[, method, keep_collapsed])
+Repairs invalid geometries.
+map
+(arg[, na_action])
+Map values of Series according to an input mapping or function.
+mask
+(cond[, other, inplace, axis, level])
+Replace values where the condition is True.
+max
+([axis, skipna, numeric_only])
+Return the maximum of the values over the requested axis.
+maximum_inscribed_circle
+(*[, tolerance])
+Return a
+GeoSeries
+of geometries representing the largest circle that is fully contained within the input geometry.
+mean
+([axis, skipna, numeric_only])
+Return the mean of the values over the requested axis.
+median
+([axis, skipna, numeric_only])
+Return the median of the values over the requested axis.
+memory_usage
+([index, deep])
+Return the memory usage of the Series.
+min
+([axis, skipna, numeric_only])
+Return the minimum of the values over the requested axis.
+minimum_bounding_circle
+()
+Return a
+GeoSeries
+of geometries representing the minimum bounding circle that encloses each geometry.
+minimum_bounding_radius
+()
+Return a
+Series
+of the radii of the minimum bounding circles that enclose each geometry.
+minimum_clearance
+()
+Return a
+Series
+containing the minimum clearance distance, which is the smallest distance by which a vertex of the geometry could be moved to produce an invalid geometry.
+minimum_clearance_line
+()
+Return a
+GeoSeries
+of linestrings whose endpoints define the minimum clearance.
+minimum_rotated_rectangle
+()
+Return a
+GeoSeries
+of the general minimum bounding rectangle that contains the object.
+mod
+(other[, level, fill_value, axis])
+Return Modulo of series and other, element-wise (binary operator
+mod
+).
+mode
+([dropna])
+Return the mode(s) of the Series.
+mul
+(other[, level, fill_value, axis])
+Return Multiplication of series and other, element-wise (binary operator
+mul
+).
+multiply
+(other[, level, fill_value, axis])
+Return Multiplication of series and other, element-wise (binary operator
+mul
+).
+ne
+(other[, level, fill_value, axis])
+Return Not equal to of series and other, element-wise (binary operator
+ne
+).
+nlargest
+([n, keep])
+Return the largest
+n
+elements.
+normalize
+()
+Return a
+GeoSeries
+of normalized geometries to normal form (or canonical form).
+notna
+()
+Detect non-missing values.
+notnull
+()
+Alias for
+notna
+method.
+nsmallest
+([n, keep])
+Return the smallest
+n
+elements.
+nunique
+([dropna])
+Return number of unique elements in the object.
+offset_curve
+(distance[, quad_segs, ...])
+Return a
+LineString
+or
+MultiLineString
+geometry at a distance from the object on its right or its left side.
+orient_polygons
+(*[, exterior_cw])
+Return a
+GeoSeries
+of geometries with enforced ring orientation.
+overlaps
+(other[, align])
+Return True for all aligned geometries that overlap
+other
+, else False.
+pad
+(*[, axis, inplace, limit, downcast])
+Fill NA/NaN values by propagating the last valid observation to next valid.
+pct_change
+([periods, fill_method, limit, freq])
+Fractional change between the current and a prior element.
+pipe
+(func, *args, **kwargs)
+Apply chainable functions that expect Series or DataFrames.
+plot
+(*args, **kwargs)
+Plot a GeoSeries.
+polygonize
+([node, full])
+Create polygons formed from the linework of a GeoSeries.
+pop
+(item)
+Return item and drops from series.
+pow
+(other[, level, fill_value, axis])
+Return Exponential power of series and other, element-wise (binary operator
+pow
+).
+prod
+([axis, skipna, numeric_only, min_count])
+Return the product of the values over the requested axis.
+product
+([axis, skipna, numeric_only, min_count])
+Return the product of the values over the requested axis.
+project
+(other[, normalized, align])
+Return the distance along each geometry nearest to
+other
+.
+quantile
+([q, interpolation])
+Return value at the given quantile.
+radd
+(other[, level, fill_value, axis])
+Return Addition of series and other, element-wise (binary operator
+radd
+).
+rank
+([axis, method, numeric_only, ...])
+Compute numerical data ranks (1 through n) along axis.
+ravel
+([order])
+Return the flattened underlying data as an ndarray or ExtensionArray.
+rdiv
+(other[, level, fill_value, axis])
+Return Floating division of series and other, element-wise (binary operator
+rtruediv
+).
+rdivmod
+(other[, level, fill_value, axis])
+Return Integer division and modulo of series and other, element-wise (binary operator
+rdivmod
+).
+reindex
+([index, axis, method, copy, level, ...])
+Conform Series to new index with optional filling logic.
+reindex_like
+(other[, method, copy, limit, ...])
+Return an object with matching indices as other object.
+relate
+(other[, align])
+Return the DE-9IM intersection matrices for the geometries.
+relate_pattern
+(other, pattern[, align])
+Return True if the DE-9IM string code for the relationship between the geometries satisfies the pattern, else False.
+remove_repeated_points
+([tolerance])
+Return a
+GeoSeries
+containing a copy of the input geometry with repeated points removed.
+rename
+([index, axis, copy, inplace, level, ...])
+Alter Series index labels or name.
+rename_axis
+([mapper, index, axis, copy, inplace])
+Set the name of the axis for the index or columns.
+reorder_levels
+(order)
+Rearrange index levels using input order.
+repeat
+(repeats[, axis])
+Repeat elements of a Series.
+replace
+([to_replace, value, inplace, limit, ...])
+Replace values given in
+to_replace
+with
+value
+.
+representative_point
+()
+Return a
+GeoSeries
+of (cheaply computed) points that are guaranteed to be within each geometry.
+resample
+(rule[, axis, closed, label, ...])
+Resample time-series data.
+reset_index
+([level, drop, name, inplace, ...])
+Generate a new DataFrame or Series with the index reset.
+reverse
+()
+Return a
+GeoSeries
+with the order of coordinates reversed.
+rfloordiv
+(other[, level, fill_value, axis])
+Return Integer division of series and other, element-wise (binary operator
+rfloordiv
+).
+rmod
+(other[, level, fill_value, axis])
+Return Modulo of series and other, element-wise (binary operator
+rmod
+).
+rmul
+(other[, level, fill_value, axis])
+Return Multiplication of series and other, element-wise (binary operator
+rmul
+).
+rolling
+(window[, min_periods, center, ...])
+Provide rolling window calculations.
+rotate
+(angle[, origin, use_radians])
+Return a
+GeoSeries
+with rotated geometries.
+round
+([decimals])
+Round each value in a Series to the given number of decimals.
+rpow
+(other[, level, fill_value, axis])
+Return Exponential power of series and other, element-wise (binary operator
+rpow
+).
+rsub
+(other[, level, fill_value, axis])
+Return Subtraction of series and other, element-wise (binary operator
+rsub
+).
+rtruediv
+(other[, level, fill_value, axis])
+Return Floating division of series and other, element-wise (binary operator
+rtruediv
+).
+sample
+([n, frac, replace, weights, ...])
+Return a random sample of items from an axis of object.
+sample_points
+(size[, method, seed, rng])
+Sample points from each geometry.
+scale
+([xfact, yfact, zfact, origin])
+Return a
+GeoSeries
+with scaled geometries.
+searchsorted
+(value[, side, sorter])
+Find indices where elements should be inserted to maintain order.
+segmentize
+(max_segment_length)
+Return a
+GeoSeries
+with vertices added to line segments based on maximum segment length.
+sem
+([axis, skipna, ddof, numeric_only])
+Return unbiased standard error of the mean over requested axis.
+set_axis
+(labels, *[, axis, copy])
+Assign desired index to given axis.
+set_crs
+(**kwargs)
+set_flags
+(*[, copy, allows_duplicate_labels])
+Return a new object with updated flags.
+set_precision
+(grid_size[, mode])
+Return a
+GeoSeries
+with the precision set to a precision grid size.
+shared_paths
+(other[, align])
+Return the shared paths between two geometries.
+shift
+([periods, freq, axis, fill_value, suffix])
+Shift index by desired number of periods with an optional time
+freq
+.
+shortest_line
+(other[, align])
+Return the shortest two-point line between two geometries.
+simplify
+(tolerance[, preserve_topology])
+Return a
+GeoSeries
+containing a simplified representation of each geometry.
+simplify_coverage
+(tolerance, *[, ...])
+Return a
+GeoSeries
+containing a simplified representation of polygonal coverage.
+skew
+([xs, ys, origin, use_radians])
+Return a
+GeoSeries
+with skewed geometries.
+snap
+(other, tolerance[, align])
+Snap the vertices and segments of the geometry to vertices of the reference.
+sort_index
+(*args, **kwargs)
+One-dimensional ndarray with axis labels (including time series).
+sort_values
+(*[, axis, ascending, inplace, ...])
+Sort by the values.
+squeeze
+([axis])
+Squeeze 1 dimensional axis objects into scalars.
+std
+([axis, skipna, ddof, numeric_only])
+Return sample standard deviation over requested axis.
+sub
+(other[, level, fill_value, axis])
+Return Subtraction of series and other, element-wise (binary operator
+sub
+).
+subtract
+(other[, level, fill_value, axis])
+Return Subtraction of series and other, element-wise (binary operator
+sub
+).
+sum
+([axis, skipna, numeric_only, min_count])
+Return the sum of the values over the requested axis.
+swapaxes
+(axis1, axis2[, copy])
+Interchange axes and swap values axes appropriately.
+swaplevel
+([i, j, copy])
+Swap levels i and j in a
+MultiIndex
+.
+symmetric_difference
+(other[, align])
+Return a
+GeoSeries
+of the symmetric difference of points in each aligned geometry with
+other
+.
+tail
+([n])
+Return the last
+n
+rows.
+take
+(*args, **kwargs)
+One-dimensional ndarray with axis labels (including time series).
+to_arrow
+([geometry_encoding, interleaved, ...])
+Encode a GeoSeries to GeoArrow format.
+to_clipboard
+(*[, excel, sep])
+Copy object to the system clipboard.
+to_crs
+([crs, epsg])
+Return a
+GeoSeries
+with all geometries transformed to a new coordinate reference system.
+to_csv
+([path_or_buf, sep, na_rep, ...])
+Write object to a comma-separated values (csv) file.
+to_dict
+(*[, into])
+Convert Series to {label -> value} dict or dict-like object.
+to_excel
+(excel_writer, *[, sheet_name, ...])
+Write object to an Excel sheet.
+to_file
+(filename[, driver, index])
+Write the
+GeoSeries
+to a file.
+to_frame
+([name])
+Convert Series to DataFrame.
+to_hdf
+(path_or_buf, *, key[, mode, ...])
+Write the contained data to an HDF5 file using HDFStore.
+to_json
+([show_bbox, drop_id, to_wgs84])
+Return a GeoJSON string representation of the GeoSeries.
+to_latex
+([buf, columns, header, index, ...])
+Render object to a LaTeX tabular, longtable, or nested table.
+to_list
+()
+Return a list of the values.
+to_markdown
+([buf, mode, index, storage_options])
+Print Series in Markdown-friendly format.
+to_numpy
+([dtype, copy, na_value])
+A NumPy ndarray representing the values in this Series or Index.
+to_period
+([freq, copy])
+Convert Series from DatetimeIndex to PeriodIndex.
+to_pickle
+(path, *[, compression, protocol, ...])
+Pickle (serialize) object to file.
+to_sql
+(name, con, *[, schema, if_exists, ...])
+Write records stored in a DataFrame to a SQL database.
+to_string
+([buf, na_rep, float_format, ...])
+Render a string representation of the Series.
+to_timestamp
+([freq, how, copy])
+Cast to DatetimeIndex of Timestamps, at
+beginning
+of period.
+to_wkb
+([hex])
+Convert GeoSeries geometries to WKB.
+to_wkt
+(**kwargs)
+Convert GeoSeries geometries to WKT.
+to_xarray
+()
+Return an xarray object from the pandas object.
+tolist
+()
+Return a list of the values.
+touches
+(other[, align])
+Return a
+Series
+of
+dtype('bool')
+with value
+True
+for each aligned geometry that touches
+other
+.
+transform
+(transformation[, include_z])
+Return a
+GeoSeries
+with the transformation function applied to the geometry coordinates.
+translate
+([xoff, yoff, zoff])
+Return a
+GeoSeries
+with translated geometries.
+transpose
+(*args, **kwargs)
+Return the transpose, which is by definition self.
+truediv
+(other[, level, fill_value, axis])
+Return Floating division of series and other, element-wise (binary operator
+truediv
+).
+truncate
+([before, after, axis, copy])
+Truncate a Series or DataFrame before and after some index value.
+tz_convert
+(tz[, axis, level, copy])
+Convert tz-aware axis to target time zone.
+tz_localize
+(tz[, axis, level, copy, ...])
+Localize tz-naive index of a Series or DataFrame to target time zone.
+union
+(other[, align])
+Return a
+GeoSeries
+of the union of points in each aligned geometry with
+other
+.
+union_all
+([method, grid_size])
+Return a geometry containing the union of all geometries in the
+GeoSeries
+.
+unique
+()
+Return unique values of Series object.
+unstack
+([level, fill_value, sort])
+Unstack, also known as pivot, Series with MultiIndex to produce DataFrame.
+update
+(other)
+Modify Series in place using values from passed Series.
+value_counts
+([normalize, sort, ascending, ...])
+Return a Series containing counts of unique values.
+var
+([axis, skipna, ddof, numeric_only])
+Return unbiased variance over requested axis.
+view
+([dtype])
+Create a new view of the Series.
+voronoi_polygons
+([tolerance, extend_to, ...])
+Return a
+GeoSeries
+consisting of objects representing the computed Voronoi diagram around the vertices of an input geometry.
+where
+(cond[, other, inplace, axis, level])
+Replace values where the condition is False.
+within
+(other[, align])
+Return a
+Series
+of
+dtype('bool')
+with value
+True
+for each aligned geometry that is within
+other
+.
+xs
+(key[, axis, level, drop_level])
+Return cross-section from the Series/DataFrame.
+Attributes
+T
+Return the transpose, which is by definition self.
+area
+Return a
+Series
+containing the area of each geometry in the
+GeoSeries
+expressed in the units of the CRS.
+array
+The ExtensionArray of the data backing this Series or Index.
+at
+Access a single value for a row/column label pair.
+attrs
+Dictionary of global attributes of this dataset.
+axes
+Return a list of the row axis labels.
+boundary
+Return a
+GeoSeries
+of lower dimensional objects representing each geometry's set-theoretic
+boundary
+.
+bounds
+Return a
+DataFrame
+with columns
+minx
+,
+miny
+,
+maxx
+,
+maxy
+values containing the bounds for each geometry.
+centroid
+Return a
+GeoSeries
+of points representing the centroid of each geometry.
+convex_hull
+Return a
+GeoSeries
+of geometries representing the convex hull of each geometry.
+crs
+The Coordinate Reference System (CRS) as a
+pyproj.CRS
+object.
+cx
+Coordinate based indexer to select by intersection with bounding box.
+dtype
+Return the dtype object of the underlying data.
+dtypes
+Return the dtype object of the underlying data.
+empty
+Indicator whether Series/DataFrame is empty.
+envelope
+Return a
+GeoSeries
+of geometries representing the envelope of each geometry.
+exterior
+Return a
+GeoSeries
+of LinearRings representing the outer boundary of each polygon in the GeoSeries.
+flags
+Get the properties associated with this pandas object.
+geom_type
+Returns a
+Series
+of strings specifying the
+Geometry Type
+of each object.
+geometry
+has_m
+Return a
+Series
+of
+dtype('bool')
+with value
+True
+for features that have a m-component.
+has_sindex
+Check the existence of the spatial index without generating it.
+has_z
+Return a
+Series
+of
+dtype('bool')
+with value
+True
+for features that have a z-component.
+hasnans
+Return True if there are any NaNs.
+iat
+Access a single value for a row/column pair by integer position.
+iloc
+Purely integer-location based indexing for selection by position.
+index
+The index (axis labels) of the Series.
+interiors
+Return a
+Series
+of List representing the inner rings of each polygon in the GeoSeries.
+is_ccw
+Return a
+Series
+of
+dtype('bool')
+with value
+True
+if a LineString or LinearRing is counterclockwise.
+is_closed
+Return a
+Series
+of
+dtype('bool')
+with value
+True
+if a LineString's or LinearRing's first and last points are equal.
+is_empty
+Returns a
+Series
+of
+dtype('bool')
+with value
+True
+for empty geometries.
+is_monotonic_decreasing
+Return boolean if values in the object are monotonically decreasing.
+is_monotonic_increasing
+Return boolean if values in the object are monotonically increasing.
+is_ring
+Return a
+Series
+of
+dtype('bool')
+with value
+True
+for features that are closed.
+is_simple
+Return a
+Series
+of
+dtype('bool')
+with value
+True
+for geometries that do not cross themselves.
+is_unique
+Return boolean if values in the object are unique.
+is_valid
+Return a
+Series
+of
+dtype('bool')
+with value
+True
+for geometries that are valid.
+length
+Return a
+Series
+containing the length of each geometry expressed in the units of the CRS.
+loc
+Access a group of rows and columns by label(s) or a boolean array.
+m
+Return the m coordinate of point geometries in a GeoSeries.
+name
+Return the name of the Series.
+nbytes
+Return the number of bytes in the underlying data.
+ndim
+Number of dimensions of the underlying data, by definition 1.
+shape
+Return a tuple of the shape of the underlying data.
+sindex
+Generate the spatial index.
+size
+Return the number of elements in the underlying data.
+total_bounds
+Return a tuple containing
+minx
+,
+miny
+,
+maxx
+,
+maxy
+values for the bounds of the series as a whole.
+type
+Return the geometry type of each geometry in the GeoSeries.
+unary_union
+Return a geometry containing the union of all geometries in the
+GeoSeries
+.
+values
+Return Series as ndarray or ndarray-like depending on the dtype.
+x
+Return the x location of point geometries in a GeoSeries.
+y
+Return the y location of point geometries in a GeoSeries.
+z
+Return the z location of point geometries in a GeoSeries.
+previous
+GeoSeries
+next
+geopandas.GeoSeries.area
+On this page
+GeoSeries
+GeoSeries.__init__()
+This Page
+Show Source

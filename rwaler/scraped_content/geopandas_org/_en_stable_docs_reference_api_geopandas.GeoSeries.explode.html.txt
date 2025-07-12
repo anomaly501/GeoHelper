@@ -1,0 +1,116 @@
+Documentation
+API reference
+GeoSeries
+geopandas.GeoSeries.explode
+geopandas.GeoSeries.explode
+#
+GeoSeries.
+explode
+(
+ignore_index
+=
+False
+,
+index_parts
+=
+False
+)
+[source]
+#
+Explode multi-part geometries into multiple single geometries.
+Single rows can become multiple rows.
+This is analogous to PostGIS’s ST_Dump(). The ‘path’ index is the
+second level of the returned MultiIndex
+Parameters
+:
+ignore_index
+bool, default False
+If True, the resulting index will be labelled 0, 1, …, n - 1,
+ignoring
+index_parts
+.
+index_parts
+boolean, default False
+If True, the resulting index will be a multi-index (original
+index with an additional level indicating the multiple
+geometries: a new zero-based index for each single part geometry
+per multi-part geometry).
+Returns
+:
+A GeoSeries with a MultiIndex. The levels of the MultiIndex are the
+original index and a zero-based integer index that counts the
+number of single geometries within a multi-part geometry.
+See also
+GeoDataFrame.explode
+Examples
+>>>
+from
+shapely.geometry
+import
+MultiPoint
+>>>
+s
+=
+geopandas
+.
+GeoSeries
+(
+...
+[
+MultiPoint
+([(
+0
+,
+0
+),
+(
+1
+,
+1
+)]),
+MultiPoint
+([(
+2
+,
+2
+),
+(
+3
+,
+3
+),
+(
+4
+,
+4
+)])]
+...
+)
+>>>
+s
+0           MULTIPOINT ((0 0), (1 1))
+1    MULTIPOINT ((2 2), (3 3), (4 4))
+dtype: geometry
+>>>
+s
+.
+explode
+(
+index_parts
+=
+True
+)
+0  0    POINT (0 0)
+1    POINT (1 1)
+1  0    POINT (2 2)
+1    POINT (3 3)
+2    POINT (4 4)
+dtype: geometry
+previous
+geopandas.GeoSeries.delaunay_triangles
+next
+geopandas.GeoSeries.intersection_all
+On this page
+GeoSeries.explode()
+This Page
+Show Source

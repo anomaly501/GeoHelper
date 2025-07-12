@@ -1,0 +1,136 @@
+Documentation
+API reference
+GeoSeries
+geopandas.GeoSeries.bounds
+geopandas.GeoSeries.bounds
+#
+property
+GeoSeries.
+bounds
+[source]
+#
+Return a
+DataFrame
+with columns
+minx
+,
+miny
+,
+maxx
+,
+maxy
+values containing the bounds for each geometry.
+See
+GeoSeries.total_bounds
+for the limits of the entire series.
+Examples
+>>>
+from
+shapely.geometry
+import
+Point
+,
+Polygon
+,
+LineString
+>>>
+d
+=
+{
+'geometry'
+:
+[
+Point
+(
+2
+,
+1
+),
+Polygon
+([(
+0
+,
+0
+),
+(
+1
+,
+1
+),
+(
+1
+,
+0
+)]),
+...
+LineString
+([(
+0
+,
+1
+),
+(
+1
+,
+2
+)])]}
+>>>
+gdf
+=
+geopandas
+.
+GeoDataFrame
+(
+d
+,
+crs
+=
+"EPSG:4326"
+)
+>>>
+gdf
+.
+bounds
+minx  miny  maxx  maxy
+0   2.0   1.0   2.0   1.0
+1   0.0   0.0   1.0   1.0
+2   0.0   1.0   1.0   2.0
+You can assign the bounds to the
+GeoDataFrame
+as:
+>>>
+import
+pandas
+as
+pd
+>>>
+gdf
+=
+pd
+.
+concat
+([
+gdf
+,
+gdf
+.
+bounds
+],
+axis
+=
+1
+)
+>>>
+gdf
+geometry  minx  miny  maxx  maxy
+0                     POINT (2 1)   2.0   1.0   2.0   1.0
+1  POLYGON ((0 0, 1 1, 1 0, 0 0))   0.0   0.0   1.0   1.0
+2           LINESTRING (0 1, 1 2)   0.0   1.0   1.0   2.0
+previous
+geopandas.GeoSeries.boundary
+next
+geopandas.GeoSeries.total_bounds
+On this page
+GeoSeries.bounds
+This Page
+Show Source

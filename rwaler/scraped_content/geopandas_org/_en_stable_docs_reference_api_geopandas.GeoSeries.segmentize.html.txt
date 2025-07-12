@@ -1,0 +1,115 @@
+Documentation
+API reference
+GeoSeries
+geopandas.GeoSeries.segmentize
+geopandas.GeoSeries.segmentize
+#
+GeoSeries.
+segmentize
+(
+max_segment_length
+)
+[source]
+#
+Return a
+GeoSeries
+with vertices added to line segments based on
+maximum segment length.
+Additional vertices will be added to every line segment in an input geometry so
+that segments are no longer than the provided maximum segment length. New
+vertices will evenly subdivide each segment. Only linear components of input
+geometries are densified; other geometries are returned unmodified.
+Parameters
+:
+max_segment_length
+float | array-like
+Additional vertices will be added so that all line segments are no longer
+than this value. Must be greater than 0.
+Returns
+:
+GeoSeries
+Examples
+>>>
+from
+shapely.geometry
+import
+Polygon
+,
+LineString
+>>>
+s
+=
+geopandas
+.
+GeoSeries
+(
+...
+[
+...
+LineString
+([(
+0
+,
+0
+),
+(
+0
+,
+10
+)]),
+...
+Polygon
+([(
+0
+,
+0
+),
+(
+10
+,
+0
+),
+(
+10
+,
+10
+),
+(
+0
+,
+10
+),
+(
+0
+,
+0
+)]),
+...
+],
+...
+)
+>>>
+s
+0                     LINESTRING (0 0, 0 10)
+1    POLYGON ((0 0, 10 0, 10 10, 0 10, 0 0))
+dtype: geometry
+>>>
+s
+.
+segmentize
+(
+max_segment_length
+=
+5
+)
+0                          LINESTRING (0 0, 0 5, 0 10)
+1    POLYGON ((0 0, 5 0, 10 0, 10 5, 10 10, 5 10, 0...
+dtype: geometry
+previous
+geopandas.GeoSeries.sample_points
+next
+geopandas.GeoSeries.shortest_line
+On this page
+GeoSeries.segmentize()
+This Page
+Show Source

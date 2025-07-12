@@ -1,0 +1,102 @@
+Documentation
+API reference
+GeoSeries
+geopandas.GeoSeries.to_json
+geopandas.GeoSeries.to_json
+#
+GeoSeries.
+to_json
+(
+show_bbox
+=
+True
+,
+drop_id
+=
+False
+,
+to_wgs84
+=
+False
+,
+**
+kwargs
+)
+[source]
+#
+Return a GeoJSON string representation of the GeoSeries.
+Parameters
+:
+show_bbox
+bool, optional, default: True
+Include bbox (bounds) in the geojson
+drop_id
+bool, default: False
+Whether to retain the index of the GeoSeries as the id property
+in the generated GeoJSON. Default is False, but may want True
+if the index is just arbitrary row numbers.
+to_wgs84: bool, optional, default: False
+If the CRS is set on the active geometry column it is exported as
+WGS84 (EPSG:4326) to meet the
+2016 GeoJSON specification
+.
+Set to True to force re-projection and set to False to ignore CRS. False by
+default.
+*kwargs* that will be passed to json.dumps().
+Returns
+:
+JSON string
+See also
+GeoSeries.to_file
+write GeoSeries to file
+Examples
+>>>
+from
+shapely.geometry
+import
+Point
+>>>
+s
+=
+geopandas
+.
+GeoSeries
+([
+Point
+(
+1
+,
+1
+),
+Point
+(
+2
+,
+2
+),
+Point
+(
+3
+,
+3
+)])
+>>>
+s
+0    POINT (1 1)
+1    POINT (2 2)
+2    POINT (3 3)
+dtype: geometry
+>>>
+s
+.
+to_json
+()
+'{"type": "FeatureCollection", "features": [{"id": "0", "type": "Feature", "properties": {}, "geometry": {"type": "Point", "coordinates": [1.0, 1.0]}, "bbox": [1.0, 1.0, 1.0, 1.0]}, {"id": "1", "type": "Feature", "properties": {}, "geometry": {"type": "Point", "coordinates": [2.0, 2.0]}, "bbox": [2.0, 2.0, 2.0, 2.0]}, {"id": "2", "type": "Feature", "properties": {}, "geometry": {"type": "Point", "coordinates": [3.0, 3.0]}, "bbox": [3.0, 3.0, 3.0, 3.0]}], "bbox": [1.0, 1.0, 3.0, 3.0]}'
+previous
+geopandas.GeoSeries.to_file
+next
+geopandas.GeoSeries.to_wkb
+On this page
+GeoSeries.to_json()
+This Page
+Show Source

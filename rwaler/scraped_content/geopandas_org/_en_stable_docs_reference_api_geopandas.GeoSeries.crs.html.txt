@@ -1,0 +1,51 @@
+Documentation
+API reference
+GeoSeries
+geopandas.GeoSeries.crs
+geopandas.GeoSeries.crs
+#
+property
+GeoSeries.
+crs
+[source]
+#
+The Coordinate Reference System (CRS) as a
+pyproj.CRS
+object.
+Returns None if the CRS is not set, and to set the value it
+:getter: Returns a
+pyproj.CRS
+or None. When setting, the value
+can be anything accepted by
+pyproj.CRS.from_user_input()
+,
+such as an authority string (eg “EPSG:4326”) or a WKT string.
+See also
+GeoSeries.set_crs
+assign CRS
+GeoSeries.to_crs
+re-project to another CRS
+Examples
+>>>
+s
+.
+crs
+<Geographic 2D CRS: EPSG:4326>
+Name: WGS 84
+Axis Info [ellipsoidal]:
+- Lat[north]: Geodetic latitude (degree)
+- Lon[east]: Geodetic longitude (degree)
+Area of Use:
+- name: World
+- bounds: (-180.0, -90.0, 180.0, 90.0)
+Datum: World Geodetic System 1984
+- Ellipsoid: WGS 84
+- Prime Meridian: Greenwich
+previous
+geopandas.GeoSeries.to_wkt
+next
+geopandas.GeoSeries.set_crs
+On this page
+GeoSeries.crs
+This Page
+Show Source

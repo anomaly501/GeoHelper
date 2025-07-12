@@ -1,0 +1,102 @@
+Documentation
+API reference
+GeoDataFrame
+geopandas.GeoDataFrame.from_file
+geopandas.GeoDataFrame.from_file
+#
+classmethod
+GeoDataFrame.
+from_file
+(
+filename
+,
+**
+kwargs
+)
+[source]
+#
+Alternate constructor to create a
+GeoDataFrame
+from a file.
+It is recommended to use
+geopandas.read_file()
+instead.
+Can load a
+GeoDataFrame
+from a file in any format recognized by
+pyogrio
+. See
+http://pyogrio.readthedocs.io/
+for details.
+Parameters
+:
+filename
+str
+File path or file handle to read from. Depending on which kwargs
+are included, the content of filename may vary. See
+pyogrio.read_dataframe()
+for usage details.
+kwargs
+key-word arguments
+These arguments are passed to
+pyogrio.read_dataframe()
+, and can be
+used to access multi-layer data, data stored within archives (zip files),
+etc.
+See also
+read_file
+read file to GeoDataFrame
+GeoDataFrame.to_file
+write GeoDataFrame to file
+Examples
+>>>
+import
+geodatasets
+>>>
+path
+=
+geodatasets
+.
+get_path
+(
+'nybb'
+)
+>>>
+gdf
+=
+geopandas
+.
+GeoDataFrame
+.
+from_file
+(
+path
+)
+>>>
+gdf
+BoroCode       BoroName     Shape_Leng    Shape_Area                                           geometry
+0         5  Staten Island  330470.010332  1.623820e+09  MULTIPOLYGON (((970217.022 145643.332, 970227....
+1         4         Queens  896344.047763  3.045213e+09  MULTIPOLYGON (((1029606.077 156073.814, 102957...
+2         3       Brooklyn  741080.523166  1.937479e+09  MULTIPOLYGON (((1021176.479 151374.797, 102100...
+3         1      Manhattan  359299.096471  6.364715e+08  MULTIPOLYGON (((981219.056 188655.316, 980940....
+4         2          Bronx  464392.991824  1.186925e+09  MULTIPOLYGON (((1012821.806 229228.265, 101278...
+The recommended method of reading files is
+geopandas.read_file()
+:
+>>>
+gdf
+=
+geopandas
+.
+read_file
+(
+path
+)
+previous
+geopandas.GeoDataFrame
+next
+geopandas.GeoDataFrame.from_features
+On this page
+GeoDataFrame.from_file()
+This Page
+Show Source

@@ -1,0 +1,66 @@
+Documentation
+API reference
+GeoSeries
+geopandas.GeoSeries.y
+geopandas.GeoSeries.y
+#
+property
+GeoSeries.
+y
+[source]
+#
+Return the y location of point geometries in a GeoSeries.
+Returns
+:
+pandas.Series
+See also
+GeoSeries.x
+GeoSeries.z
+GeoSeries.m
+Examples
+>>>
+from
+shapely.geometry
+import
+Point
+>>>
+s
+=
+geopandas
+.
+GeoSeries
+([
+Point
+(
+1
+,
+1
+),
+Point
+(
+2
+,
+2
+),
+Point
+(
+3
+,
+3
+)])
+>>>
+s
+.
+y
+0    1.0
+1    2.0
+2    3.0
+dtype: float64
+previous
+geopandas.GeoSeries.x
+next
+geopandas.GeoSeries.z
+On this page
+GeoSeries.y
+This Page
+Show Source

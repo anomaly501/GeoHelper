@@ -1,0 +1,157 @@
+Documentation
+API reference
+GeoSeries
+geopandas.GeoSeries.skew
+geopandas.GeoSeries.skew
+#
+GeoSeries.
+skew
+(
+xs
+=
+0.0
+,
+ys
+=
+0.0
+,
+origin
+=
+'center'
+,
+use_radians
+=
+False
+)
+[source]
+#
+Return a
+GeoSeries
+with skewed geometries.
+The geometries are sheared by angles along the x and y dimensions.
+See
+http://shapely.readthedocs.io/en/latest/manual.html#shapely.affinity.skew
+for details.
+Parameters
+:
+xs, ys
+float, float
+The shear angle(s) for the x and y axes respectively. These can be
+specified in either degrees (default) or radians by setting
+use_radians=True.
+origin
+string, Point, or tuple (x, y)
+The point of origin can be a keyword ‘center’ for the bounding box
+center (default), ‘centroid’ for the geometry’s centroid, a Point
+object or a coordinate tuple (x, y).
+use_radians
+boolean
+Whether to interpret the shear angle(s) as degrees or radians
+Examples
+>>>
+from
+shapely.geometry
+import
+Point
+,
+LineString
+,
+Polygon
+>>>
+s
+=
+geopandas
+.
+GeoSeries
+(
+...
+[
+...
+Point
+(
+1
+,
+1
+),
+...
+LineString
+([(
+1
+,
+-
+1
+),
+(
+1
+,
+0
+)]),
+...
+Polygon
+([(
+3
+,
+-
+1
+),
+(
+4
+,
+0
+),
+(
+3
+,
+1
+)]),
+...
+]
+...
+)
+>>>
+s
+0                         POINT (1 1)
+1              LINESTRING (1 -1, 1 0)
+2    POLYGON ((3 -1, 4 0, 3 1, 3 -1))
+dtype: geometry
+>>>
+s
+.
+skew
+(
+45
+,
+30
+)
+0                                          POINT (1 1)
+1                           LINESTRING (0.5 -1, 1.5 0)
+2    POLYGON ((2 -1.28868, 4 0.28868, 4 0.71132, 2 ...
+dtype: geometry
+>>>
+s
+.
+skew
+(
+45
+,
+30
+,
+origin
+=
+(
+0
+,
+0
+))
+0                                    POINT (2 1.57735)
+1         LINESTRING (1.11022e-16 -0.42265, 1 0.57735)
+2    POLYGON ((2 0.73205, 4 2.3094, 4 2.73205, 2 0....
+dtype: geometry
+previous
+geopandas.GeoSeries.scale
+next
+geopandas.GeoSeries.translate
+On this page
+GeoSeries.skew()
+This Page
+Show Source

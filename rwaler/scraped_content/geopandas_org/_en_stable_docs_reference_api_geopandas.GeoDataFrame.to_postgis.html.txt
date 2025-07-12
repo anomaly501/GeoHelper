@@ -1,0 +1,119 @@
+Documentation
+API reference
+GeoDataFrame
+geopandas.GeoDataFrame.to_postgis
+geopandas.GeoDataFrame.to_postgis
+#
+GeoDataFrame.
+to_postgis
+(
+name
+,
+con
+,
+schema
+=
+None
+,
+if_exists
+=
+'fail'
+,
+index
+=
+False
+,
+index_label
+=
+None
+,
+chunksize
+=
+None
+,
+dtype
+=
+None
+)
+[source]
+#
+Upload GeoDataFrame into PostGIS database.
+This method requires SQLAlchemy and GeoAlchemy2, and a PostgreSQL
+Python driver (psycopg or psycopg2) to be installed.
+It is also possible to use
+to_file()
+to write to a database.
+Especially for file geodatabases like GeoPackage or SpatiaLite this can be
+easier.
+Parameters
+:
+name
+str
+Name of the target table.
+con
+sqlalchemy.engine.Connection or sqlalchemy.engine.Engine
+Active connection to the PostGIS database.
+if_exists
+{‘fail’, ‘replace’, ‘append’}, default ‘fail’
+How to behave if the table already exists:
+fail: Raise a ValueError.
+replace: Drop the table before inserting new values.
+append: Insert new values to the existing table.
+schema
+string, optional
+Specify the schema. If None, use default schema: ‘public’.
+index
+bool, default False
+Write DataFrame index as a column.
+Uses
+index_label
+as the column name in the table.
+index_label
+string or sequence, default None
+Column label for index column(s).
+If None is given (default) and index is True,
+then the index names are used.
+chunksize
+int, optional
+Rows will be written in batches of this size at a time.
+By default, all rows will be written at once.
+dtype
+dict of column name to SQL type, default None
+Specifying the datatype for columns.
+The keys should be the column names and the values
+should be the SQLAlchemy types.
+See also
+GeoDataFrame.to_file
+write GeoDataFrame to file
+read_postgis
+read PostGIS database to GeoDataFrame
+Examples
+>>>
+from
+sqlalchemy
+import
+create_engine
+>>>
+engine
+=
+create_engine
+(
+"postgresql://myusername:mypassword@myhost:5432/mydatabase"
+)
+>>>
+gdf
+.
+to_postgis
+(
+"my_table"
+,
+engine
+)
+previous
+geopandas.GeoDataFrame.to_feather
+next
+geopandas.GeoDataFrame.to_wkb
+On this page
+GeoDataFrame.to_postgis()
+This Page
+Show Source

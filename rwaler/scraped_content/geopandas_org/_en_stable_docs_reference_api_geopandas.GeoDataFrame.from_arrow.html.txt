@@ -1,0 +1,72 @@
+Documentation
+API reference
+GeoDataFrame
+geopandas.GeoDataFrame.from_arrow
+geopandas.GeoDataFrame.from_arrow
+#
+classmethod
+GeoDataFrame.
+from_arrow
+(
+table
+,
+geometry
+=
+None
+,
+to_pandas_kwargs
+=
+None
+)
+[source]
+#
+Construct a GeoDataFrame from a Arrow table object based on GeoArrow
+extension types.
+See
+https://geoarrow.org/
+for details on the GeoArrow specification.
+This functions accepts any tabular Arrow object implementing
+the
+Arrow PyCapsule Protocol
+(i.e. having an
+__arrow_c_array__
+or
+__arrow_c_stream__
+method).
+Added in version 1.0.
+Parameters
+:
+table
+pyarrow.Table or Arrow-compatible table
+Any tabular object implementing the Arrow PyCapsule Protocol
+(i.e. has an
+__arrow_c_array__
+or
+__arrow_c_stream__
+method). This table should have at least one column with a
+geoarrow geometry type.
+geometry
+str, default None
+The name of the geometry column to set as the active geometry
+column. If None, the first geometry column found will be used.
+to_pandas_kwargs
+dict, optional
+Arguments passed to the
+pa.Table.to_pandas
+method for non-geometry
+columns. This can be used to control the behavior of the conversion of the
+non-geometry columns to a pandas DataFrame. For example, you can use this
+to control the dtype conversion of the columns. By default, the
+to_pandas
+method is called with no additional arguments.
+Returns
+:
+GeoDataFrame
+previous
+geopandas.GeoDataFrame.from_postgis
+next
+geopandas.GeoDataFrame.to_file
+On this page
+GeoDataFrame.from_arrow()
+This Page
+Show Source

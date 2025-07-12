@@ -1,0 +1,184 @@
+Documentation
+API reference
+GeoDataFrame
+geopandas.GeoDataFrame.sjoin
+geopandas.GeoDataFrame.sjoin
+#
+GeoDataFrame.
+sjoin
+(
+df
+,
+how
+=
+'inner'
+,
+predicate
+=
+'intersects'
+,
+lsuffix
+=
+'left'
+,
+rsuffix
+=
+'right'
+,
+**
+kwargs
+)
+[source]
+#
+Spatial join of two GeoDataFrames.
+See the User Guide page
+Merging data
+for details.
+Parameters
+:
+df
+GeoDataFrame
+how
+string, default ‘inner’
+The type of join:
+‘left’: use keys from left_df; retain only left_df geometry column
+‘right’: use keys from right_df; retain only right_df geometry column
+‘inner’: use intersection of keys from both dfs; retain only
+left_df geometry column
+predicate
+string, default ‘intersects’
+Binary predicate. Valid values are determined by the spatial index used.
+You can check the valid values in left_df or right_df as
+left_df.sindex.valid_query_predicates
+or
+right_df.sindex.valid_query_predicates
+lsuffix
+string, default ‘left’
+Suffix to apply to overlapping column names (left GeoDataFrame).
+rsuffix
+string, default ‘right’
+Suffix to apply to overlapping column names (right GeoDataFrame).
+distance
+number or array_like, optional
+Distance(s) around each input geometry within which to query the tree
+for the ‘dwithin’ predicate. If array_like, must be
+one-dimesional with length equal to length of left GeoDataFrame.
+Required if
+predicate='dwithin'
+.
+on_attribute
+string, list or tuple
+Column name(s) to join on as an additional join restriction on top
+of the spatial predicate. These must be found in both DataFrames.
+If set, observations are joined only if the predicate applies
+and values in specified columns match.
+See also
+GeoDataFrame.sjoin_nearest
+nearest neighbor join
+sjoin
+equivalent top-level function
+Notes
+Every operation in GeoPandas is planar, i.e. the potential third
+dimension is not taken into account.
+Examples
+>>>
+import
+geodatasets
+>>>
+chicago
+=
+geopandas
+.
+read_file
+(
+...
+geodatasets
+.
+get_path
+(
+"geoda.chicago_commpop"
+)
+...
+)
+>>>
+groceries
+=
+geopandas
+.
+read_file
+(
+...
+geodatasets
+.
+get_path
+(
+"geoda.groceries"
+)
+...
+)
+.
+to_crs
+(
+chicago
+.
+crs
+)
+>>>
+chicago
+.
+head
+()
+community  ...                                           geometry
+0          DOUGLAS  ...  MULTIPOLYGON (((-87.60914 41.84469, -87.60915 ...
+1          OAKLAND  ...  MULTIPOLYGON (((-87.59215 41.81693, -87.59231 ...
+2      FULLER PARK  ...  MULTIPOLYGON (((-87.62880 41.80189, -87.62879 ...
+3  GRAND BOULEVARD  ...  MULTIPOLYGON (((-87.60671 41.81681, -87.60670 ...
+4          KENWOOD  ...  MULTIPOLYGON (((-87.59215 41.81693, -87.59215 ...
+[5 rows x 9 columns]
+>>>
+groceries
+.
+head
+()
+OBJECTID     Ycoord  ...  Category                           geometry
+0        16  41.973266  ...       NaN  MULTIPOINT ((-87.65661 41.97321))
+1        18  41.696367  ...       NaN  MULTIPOINT ((-87.68136 41.69713))
+2        22  41.868634  ...       NaN  MULTIPOINT ((-87.63918 41.86847))
+3        23  41.877590  ...       new  MULTIPOINT ((-87.65495 41.87783))
+4        27  41.737696  ...       NaN  MULTIPOINT ((-87.62715 41.73623))
+[5 rows x 8 columns]
+>>>
+groceries_w_communities
+=
+groceries
+.
+sjoin
+(
+chicago
+)
+>>>
+groceries_w_communities
+[[
+"OBJECTID"
+,
+"community"
+,
+"geometry"
+]]
+.
+head
+()
+OBJECTID       community                           geometry
+0        16          UPTOWN  MULTIPOINT ((-87.65661 41.97321))
+1        18     MORGAN PARK  MULTIPOINT ((-87.68136 41.69713))
+2        22  NEAR WEST SIDE  MULTIPOINT ((-87.63918 41.86847))
+3        23  NEAR WEST SIDE  MULTIPOINT ((-87.65495 41.87783))
+4        27         CHATHAM  MULTIPOINT ((-87.62715 41.73623))
+previous
+geopandas.GeoDataFrame.explode
+next
+geopandas.GeoDataFrame.sjoin_nearest
+On this page
+GeoDataFrame.sjoin()
+This Page
+Show Source

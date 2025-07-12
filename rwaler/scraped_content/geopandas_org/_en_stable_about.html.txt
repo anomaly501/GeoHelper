@@ -1,0 +1,80 @@
+About GeoPandas
+About GeoPandas
+#
+GeoPandas is an open source project to add support for geographic data to pandas objects. It
+currently implements
+GeoSeries
+and
+GeoDataFrame
+types which are subclasses of
+pandas.Series
+and
+pandas.DataFrame
+respectively. GeoPandas objects can act on
+shapely
+geometry objects and perform geometric operations.
+GeoPandas is a community-led project written, used and supported by a wide range of
+people from all around of world of a large variety of backgrounds. Want to get involved
+in the community? See our
+community guidelines
+.
+GeoPandas will always be 100% open source software, free for all to use and released
+under the liberal terms of the BSD-3-Clause license.
+Team
+Roadmap
+Citing
+Logo
+GeoPandas is a fiscally sponsored project of NumFOCUS, a nonprofit dedicated to
+supporting the open-source scientific computing community. If you like GeoPandas and
+want to support our mission, please consider making a
+donation
+to support our
+efforts.
+NumFOCUS is a 501(c)(3) non-profit charity in the United States; as such, donations to
+NumFOCUS are tax-deductible as allowed by law. As with any donation, you should consult
+with your personal tax adviser or the IRS about your particular tax situation.
+Project history
+#
+Kelsey Jordahl founded GeoPandas project in 2013 during the Scipy Conference and
+released a version 0.1.0 in July 2014. In 2016, Joris Van den Bossche took the lead and
+became the maintainer of the project. Since the beginning, GeoPandas is a BSD-licensed
+open-source project supported by a
+community of
+contributors
+from around
+the world and is now maintained by a
+team
+of core developers.
+In 2020 GeoPandas became
+NumFOCUS Affiliated
+Project
+and received two
+Small Development Grants
+to support its
+development. In 2023, GeoPandas became
+NumFOCUS Sponsored
+Project
+.
+Timeline
+#
+2013
+: Beginning of the development
+2014
+: GeoPandas 0.1.0 released
+2020
+: GeoPandas became
+NumFOCUS Affiliated
+Project
+2023
+: GeoPandas became
+NumFOCUS Sponsored
+Project
+previous
+GeoPandas 1.1.1
+next
+Team
+On this page
+Project history
+Timeline
+This Page
+Show Source

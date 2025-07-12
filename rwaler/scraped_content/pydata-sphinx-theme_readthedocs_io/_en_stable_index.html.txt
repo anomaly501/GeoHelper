@@ -1,0 +1,104 @@
+The PyData Sphinx Theme
+#
+A clean, Bootstrap-based Sphinx theme by and for
+the PyData community
+.
+Built with Bootstrap
+Use Bootstrap classes and functionality in your documentation.
+Responsive Design
+Site sections will change behavior and size at different screen sizes.
+Light / Dark theme
+Users can toggle between light and dark themes interactively.
+Customizable UI and themes
+Customize colors and branding with CSS variables, and build custom UIs with
+Sphinx Design components
+.
+Supports PyData and Jupyter
+CSS and UI support for
+Jupyter extensions
+and
+PyData execution outputs
+.
+Example Gallery
+See
+our gallery
+of projects that use this theme.
+See also
+If you are looking for a Sphinx theme that puts all of its sub-pages in the sidebar, the
+Sphinx Book Theme
+has a similar look and feel, and
+Furo
+is another excellent choice. You can also see the
+Sphinx Themes Gallery
+for more ideas.
+User Guide
+#
+Information about using, configuration, and customizing this theme.
+User Guide
+Installation
+Theme Structure and Layout
+Navigation depth and collapsing sidebars
+Page Table of Contents
+Header links
+Source Buttons
+Sphinx indices
+Announcement banners
+Version switcher dropdowns
+Search bar / search button
+Keyboard shortcuts
+Internationalization
+Back to Top button
+Theme-specific elements
+Blogs with
+ABlog
+Sphinx Design Components
+Extending the theme
+Branding and logo
+Theme variables and CSS
+Fonts and FontAwesome
+Light and dark themes
+Accessibility
+Analytics and usage services
+Add custom CSS and JS assets
+Build performance and size
+Theme changes, deprecations, and warnings
+Read the Docs functionality
+Community and contribution guide
+#
+Information about the community behind this theme and how you can contribute.
+Contributor Guide
+Get started with development
+Structure of this theme
+Topic guides
+Merge and review policy
+Making releases
+Supported Python and Sphinx versions
+Contributors to this theme
+Inspiration for design and UX
+PyData Sphinx Theme Design System
+Examples
+#
+Several example pages to demonstrate the functionality of this theme when used alongside other Sphinx extensions.
+Examples
+Gallery of sites using this theme
+Kitchen Sink
+PyData Library Styles
+Execution Libraries
+Graphviz
+1. Test of no sidebar
+2. Test of persistent search field
+3. Test of in-page TOC with no right sidebar
+4. Section to show off pages with many sub pages
+5. Top-level headers and the TOC
+6. An example with multiple top-level headers
+7. An example with a single top-level header
+Link to an external site
+API
+#
+The content of the exposed
+pydata_sphinx_theme
+API.
+API
+pydata_sphinx_theme
+next
+User Guide

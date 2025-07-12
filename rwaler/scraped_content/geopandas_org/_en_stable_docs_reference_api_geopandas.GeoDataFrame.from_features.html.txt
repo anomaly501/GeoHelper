@@ -1,0 +1,202 @@
+Documentation
+API reference
+GeoDataFrame
+geopandas.GeoDataFrame.from_features
+geopandas.GeoDataFrame.from_features
+#
+classmethod
+GeoDataFrame.
+from_features
+(
+features
+,
+crs
+=
+None
+,
+columns
+=
+None
+)
+[source]
+#
+Alternate constructor to create GeoDataFrame from an iterable of
+features or a feature collection.
+Parameters
+:
+features
+Iterable of features, where each element must be a feature
+dictionary or implement the __geo_interface__.
+Feature collection, where the ‘features’ key contains an
+iterable of features.
+Object holding a feature collection that implements the
+__geo_interface__
+.
+crs
+str or dict (optional)
+Coordinate reference system to set on the resulting frame.
+columns
+list of column names, optional
+Optionally specify the column names to include in the output frame.
+This does not overwrite the property names of the input, but can
+ensure a consistent output format.
+Returns
+:
+GeoDataFrame
+Notes
+For more information about the
+__geo_interface__
+, see
+https://gist.github.com/sgillies/2217756
+Examples
+>>>
+feature_coll
+=
+{
+...
+"type"
+:
+"FeatureCollection"
+,
+...
+"features"
+:
+[
+...
+{
+...
+"id"
+:
+"0"
+,
+...
+"type"
+:
+"Feature"
+,
+...
+"properties"
+:
+{
+"col1"
+:
+"name1"
+},
+...
+"geometry"
+:
+{
+"type"
+:
+"Point"
+,
+"coordinates"
+:
+(
+1.0
+,
+2.0
+)},
+...
+"bbox"
+:
+(
+1.0
+,
+2.0
+,
+1.0
+,
+2.0
+),
+...
+},
+...
+{
+...
+"id"
+:
+"1"
+,
+...
+"type"
+:
+"Feature"
+,
+...
+"properties"
+:
+{
+"col1"
+:
+"name2"
+},
+...
+"geometry"
+:
+{
+"type"
+:
+"Point"
+,
+"coordinates"
+:
+(
+2.0
+,
+1.0
+)},
+...
+"bbox"
+:
+(
+2.0
+,
+1.0
+,
+2.0
+,
+1.0
+),
+...
+},
+...
+],
+...
+"bbox"
+:
+(
+1.0
+,
+1.0
+,
+2.0
+,
+2.0
+),
+...
+}
+>>>
+df
+=
+geopandas
+.
+GeoDataFrame
+.
+from_features
+(
+feature_coll
+)
+>>>
+df
+geometry   col1
+0  POINT (1 2)  name1
+1  POINT (2 1)  name2
+previous
+geopandas.GeoDataFrame.from_file
+next
+geopandas.GeoDataFrame.from_postgis
+On this page
+GeoDataFrame.from_features()
+This Page
+Show Source

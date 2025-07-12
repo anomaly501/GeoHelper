@@ -1,0 +1,153 @@
+Documentation
+API reference
+GeoSeries
+geopandas.GeoSeries.count_geometries
+geopandas.GeoSeries.count_geometries
+#
+GeoSeries.
+count_geometries
+(
+)
+[source]
+#
+Return a
+Series
+containing the count of geometries in each multi-part
+geometry.
+For single-part geometry objects, this is always 1. For multi-part geometries,
+like
+MultiPoint
+or
+MultiLineString
+, it is the number of parts in the
+geometry. For
+GeometryCollection
+, it is the number of geometries direct
+parts of the collection (the method does not recurse into collections within
+collections).
+See also
+GeoSeries.count_coordinates
+count the number of coordinates in a geometry
+GeoSeries.count_interior_rings
+count the number of interior rings
+Examples
+>>>
+from
+shapely.geometry
+import
+Point
+,
+MultiPoint
+,
+LineString
+,
+MultiLineString
+>>>
+s
+=
+geopandas
+.
+GeoSeries
+(
+...
+[
+...
+MultiPoint
+([(
+0
+,
+0
+),
+(
+1
+,
+1
+),
+(
+1
+,
+-
+1
+),
+(
+0
+,
+1
+)]),
+...
+MultiLineString
+([((
+0
+,
+0
+),
+(
+1
+,
+1
+)),
+((
+-
+1
+,
+0
+),
+(
+1
+,
+0
+))]),
+...
+LineString
+([(
+0
+,
+0
+),
+(
+1
+,
+1
+),
+(
+1
+,
+-
+1
+)]),
+...
+Point
+(
+0
+,
+0
+),
+...
+]
+...
+)
+>>>
+s
+0     MULTIPOINT ((0 0), (1 1), (1 -1), (0 1))
+1    MULTILINESTRING ((0 0, 1 1), (-1 0, 1 0))
+2                  LINESTRING (0 0, 1 1, 1 -1)
+3                                  POINT (0 0)
+dtype: geometry
+>>>
+s
+.
+count_geometries
+()
+0    4
+1    2
+2    1
+3    1
+dtype: int32
+previous
+geopandas.GeoSeries.count_coordinates
+next
+geopandas.GeoSeries.count_interior_rings
+On this page
+GeoSeries.count_geometries()
+This Page
+Show Source

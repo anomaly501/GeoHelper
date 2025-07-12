@@ -1,0 +1,77 @@
+Documentation
+API reference
+GeoSeries
+geopandas.GeoSeries.has_z
+geopandas.GeoSeries.has_z
+#
+property
+GeoSeries.
+has_z
+[source]
+#
+Return a
+Series
+of
+dtype('bool')
+with value
+True
+for
+features that have a z-component.
+Notes
+Every operation in GeoPandas is planar, i.e. the potential third
+dimension is not taken into account.
+Examples
+>>>
+from
+shapely.geometry
+import
+Point
+>>>
+s
+=
+geopandas
+.
+GeoSeries
+(
+...
+[
+...
+Point
+(
+0
+,
+1
+),
+...
+Point
+(
+0
+,
+1
+,
+2
+),
+...
+]
+...
+)
+>>>
+s
+0        POINT (0 1)
+1    POINT Z (0 1 2)
+dtype: geometry
+>>>
+s
+.
+has_z
+0    False
+1     True
+dtype: bool
+previous
+geopandas.GeoSeries.has_m
+next
+geopandas.GeoSeries.is_ccw
+On this page
+GeoSeries.has_z
+This Page
+Show Source

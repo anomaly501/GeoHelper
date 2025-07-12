@@ -1,0 +1,87 @@
+Documentation
+API reference
+GeoSeries
+geopandas.GeoSeries.from_file
+geopandas.GeoSeries.from_file
+#
+classmethod
+GeoSeries.
+from_file
+(
+filename
+,
+**
+kwargs
+)
+[source]
+#
+Alternate constructor to create a
+GeoSeries
+from a file.
+Can load a
+GeoSeries
+from a file from any format recognized by
+pyogrio
+. See
+http://pyogrio.readthedocs.io/
+for details.
+From a file with attributes loads only geometry column. Note that to do
+that, GeoPandas first loads the whole GeoDataFrame.
+Parameters
+:
+filename
+str
+File path or file handle to read from. Depending on which kwargs
+are included, the content of filename may vary. See
+pyogrio.read_dataframe()
+for usage details.
+kwargs
+key-word arguments
+These arguments are passed to
+pyogrio.read_dataframe()
+, and can be
+used to access multi-layer data, data stored within archives (zip files),
+etc.
+See also
+read_file
+read file to GeoDataFrame
+Examples
+>>>
+import
+geodatasets
+>>>
+path
+=
+geodatasets
+.
+get_path
+(
+'nybb'
+)
+>>>
+s
+=
+geopandas
+.
+GeoSeries
+.
+from_file
+(
+path
+)
+>>>
+s
+0    MULTIPOLYGON (((970217.022 145643.332, 970227....
+1    MULTIPOLYGON (((1029606.077 156073.814, 102957...
+2    MULTIPOLYGON (((1021176.479 151374.797, 102100...
+3    MULTIPOLYGON (((981219.056 188655.316, 980940....
+4    MULTIPOLYGON (((1012821.806 229228.265, 101278...
+Name: geometry, dtype: geometry
+previous
+geopandas.GeoSeries.from_arrow
+next
+geopandas.GeoSeries.from_wkb
+On this page
+GeoSeries.from_file()
+This Page
+Show Source

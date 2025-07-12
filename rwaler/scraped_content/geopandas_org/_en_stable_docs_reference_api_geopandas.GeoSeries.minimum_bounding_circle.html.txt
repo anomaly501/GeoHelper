@@ -1,0 +1,113 @@
+Documentation
+API reference
+GeoSeries
+geopandas.GeoSeries.minimum_bounding_circle
+geopandas.GeoSeries.minimum_bounding_circle
+#
+GeoSeries.
+minimum_bounding_circle
+(
+)
+[source]
+#
+Return a
+GeoSeries
+of geometries representing the minimum bounding
+circle that encloses each geometry.
+See also
+GeoSeries.convex_hull
+convex hull geometry
+GeoSeries.maximum_inscribed_circle
+the largest circle within the geometry
+Examples
+>>>
+from
+shapely.geometry
+import
+Polygon
+,
+LineString
+,
+Point
+>>>
+s
+=
+geopandas
+.
+GeoSeries
+(
+...
+[
+...
+Polygon
+([(
+0
+,
+0
+),
+(
+1
+,
+1
+),
+(
+0
+,
+1
+),
+(
+0
+,
+0
+)]),
+...
+LineString
+([(
+0
+,
+0
+),
+(
+1
+,
+1
+),
+(
+1
+,
+0
+)]),
+...
+Point
+(
+0
+,
+0
+),
+...
+]
+...
+)
+>>>
+s
+0    POLYGON ((0 0, 1 1, 0 1, 0 0))
+1        LINESTRING (0 0, 1 1, 1 0)
+2                       POINT (0 0)
+dtype: geometry
+>>>
+s
+.
+minimum_bounding_circle
+()
+0    POLYGON ((1.20711 0.5, 1.19352 0.36205, 1.1532...
+1    POLYGON ((1.20711 0.5, 1.19352 0.36205, 1.1532...
+2                                          POINT (0 0)
+dtype: geometry
+previous
+geopandas.GeoSeries.make_valid
+next
+geopandas.GeoSeries.maximum_inscribed_circle
+On this page
+GeoSeries.minimum_bounding_circle()
+This Page
+Show Source

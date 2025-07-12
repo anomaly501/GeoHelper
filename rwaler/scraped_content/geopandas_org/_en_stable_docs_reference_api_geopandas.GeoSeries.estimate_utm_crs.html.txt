@@ -1,0 +1,75 @@
+Documentation
+API reference
+GeoSeries
+geopandas.GeoSeries.estimate_utm_crs
+geopandas.GeoSeries.estimate_utm_crs
+#
+GeoSeries.
+estimate_utm_crs
+(
+datum_name
+=
+'WGS
+84'
+)
+[source]
+#
+Return the estimated UTM CRS based on the bounds of the dataset.
+Added in version 0.9.
+Parameters
+:
+datum_name
+str, optional
+The name of the datum to use in the query. Default is WGS 84.
+Returns
+:
+pyproj.CRS
+Examples
+>>>
+import
+geodatasets
+>>>
+df
+=
+geopandas
+.
+read_file
+(
+...
+geodatasets
+.
+get_path
+(
+"geoda.chicago_health"
+)
+...
+)
+>>>
+df
+.
+geometry
+.
+estimate_utm_crs
+()
+<Derived Projected CRS: EPSG:32616>
+Name: WGS 84 / UTM zone 16N
+Axis Info [cartesian]:
+- E[east]: Easting (metre)
+- N[north]: Northing (metre)
+Area of Use:
+- name: Between 90°W and 84°W, northern hemisphere between equator and 84°N, ...
+- bounds: (-90.0, 0.0, -84.0, 84.0)
+Coordinate Operation:
+- name: UTM zone 16N
+- method: Transverse Mercator
+Datum: World Geodetic System 1984 ensemble
+- Ellipsoid: WGS 84
+- Prime Meridian: Greenwich
+previous
+geopandas.GeoSeries.to_crs
+next
+geopandas.GeoSeries.fillna
+On this page
+GeoSeries.estimate_utm_crs()
+This Page
+Show Source

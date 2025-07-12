@@ -1,0 +1,171 @@
+Documentation
+API reference
+GeoDataFrame
+geopandas.GeoDataFrame.from_postgis
+geopandas.GeoDataFrame.from_postgis
+#
+classmethod
+GeoDataFrame.
+from_postgis
+(
+sql
+,
+con
+,
+geom_col
+=
+'geom'
+,
+crs
+=
+None
+,
+index_col
+=
+None
+,
+coerce_float
+=
+True
+,
+parse_dates
+=
+None
+,
+params
+=
+None
+,
+chunksize
+=
+None
+)
+[source]
+#
+Alternate constructor to create a
+GeoDataFrame
+from a sql query
+containing a geometry column in WKB representation.
+Parameters
+:
+sql
+string
+con
+sqlalchemy.engine.Connection or sqlalchemy.engine.Engine
+geom_col
+string, default ‘geom’
+column name to convert to shapely geometries
+crs
+optional
+Coordinate reference system to use for the returned GeoDataFrame
+index_col
+string or list of strings, optional, default: None
+Column(s) to set as index(MultiIndex)
+coerce_float
+boolean, default True
+Attempt to convert values of non-string, non-numeric objects (like
+decimal.Decimal) to floating point, useful for SQL result sets
+parse_dates
+list or dict, default None
+List of column names to parse as dates.
+Dict of
+{column_name:
+format
+string}
+where format string is
+strftime compatible in case of parsing string times, or is one of
+(D, s, ns, ms, us) in case of parsing integer timestamps.
+Dict of
+{column_name:
+arg
+dict}
+, where the arg dict
+corresponds to the keyword arguments of
+pandas.to_datetime()
+. Especially useful with databases
+without native Datetime support, such as SQLite.
+params
+list, tuple or dict, optional, default None
+List of parameters to pass to execute method.
+chunksize
+int, default None
+If specified, return an iterator where chunksize is the number
+of rows to include in each chunk.
+See also
+geopandas.read_postgis
+read PostGIS database to GeoDataFrame
+Examples
+PostGIS
+>>>
+from
+sqlalchemy
+import
+create_engine
+>>>
+db_connection_url
+=
+"postgresql://myusername:mypassword@myhost:5432/mydb"
+>>>
+con
+=
+create_engine
+(
+db_connection_url
+)
+>>>
+sql
+=
+"SELECT geom, highway FROM roads"
+>>>
+df
+=
+geopandas
+.
+GeoDataFrame
+.
+from_postgis
+(
+sql
+,
+con
+)
+SpatiaLite
+>>>
+sql
+=
+"SELECT ST_Binary(geom) AS geom, highway FROM roads"
+>>>
+df
+=
+geopandas
+.
+GeoDataFrame
+.
+from_postgis
+(
+sql
+,
+con
+)
+The recommended method of reading from PostGIS is
+geopandas.read_postgis()
+:
+>>>
+df
+=
+geopandas
+.
+read_postgis
+(
+sql
+,
+con
+)
+previous
+geopandas.GeoDataFrame.from_features
+next
+geopandas.GeoDataFrame.from_arrow
+On this page
+GeoDataFrame.from_postgis()
+This Page
+Show Source

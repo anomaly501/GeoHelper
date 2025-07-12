@@ -1,0 +1,113 @@
+Documentation
+API reference
+GeoSeries
+geopandas.GeoSeries.get_precision
+geopandas.GeoSeries.get_precision
+#
+GeoSeries.
+get_precision
+(
+)
+[source]
+#
+Return a
+Series
+of the precision of each geometry.
+If a precision has not been previously set, it will be 0, indicating regular
+double precision coordinates are in use. Otherwise, it will return the precision
+grid size that was set on a geometry.
+Returns NaN for not-a-geometry values.
+See also
+GeoSeries.set_precision
+set precision grid size
+Examples
+>>>
+from
+shapely.geometry
+import
+Point
+>>>
+s
+=
+geopandas
+.
+GeoSeries
+(
+...
+[
+...
+Point
+(
+0
+,
+1
+),
+...
+Point
+(
+0
+,
+1
+,
+2
+),
+...
+Point
+(
+0
+,
+1.5
+,
+2
+),
+...
+]
+...
+)
+>>>
+s
+0          POINT (0 1)
+1      POINT Z (0 1 2)
+2    POINT Z (0 1.5 2)
+dtype: geometry
+>>>
+s
+.
+get_precision
+()
+0    0.0
+1    0.0
+2    0.0
+dtype: float64
+>>>
+s1
+=
+s
+.
+set_precision
+(
+1
+)
+>>>
+s1
+0        POINT (0 1)
+1    POINT Z (0 1 2)
+2    POINT Z (0 2 2)
+dtype: geometry
+>>>
+s1
+.
+get_precision
+()
+0    1.0
+1    1.0
+2    1.0
+dtype: float64
+previous
+geopandas.GeoSeries.set_precision
+next
+geopandas.GeoSeries.get_geometry
+On this page
+GeoSeries.get_precision()
+This Page
+Show Source

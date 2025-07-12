@@ -1,0 +1,69 @@
+Documentation
+API reference
+API reference
+#
+The API reference provides an overview of all public objects, functions and methods implemented in GeoPandas. All classes and function exposed in
+geopandas.*
+namespace plus those listed in the reference are public.
+Warning
+The
+geopandas.array
+and
+geopandas.base
+modules are private. Stable functionality in such modules is not guaranteed.
+GeoSeries
+Constructor
+General methods and attributes
+Unary predicates
+Binary predicates
+Set-theoretic methods
+Constructive methods and attributes
+Affine transformations
+Linestring operations
+Aggregating and exploding
+Serialization / IO / conversion
+Projection handling
+Missing values
+Overlay operations
+Plotting
+Spatial index
+Indexing
+Interface
+GeoDataFrame
+Constructor
+Serialization / IO / conversion
+Projection handling
+Active geometry handling
+Aggregating and exploding
+Spatial joins
+Overlay operations
+Plotting
+Spatial index
+Indexing
+Interface
+Input/output
+GIS vector files
+PostGIS
+Feather
+Parquet
+Tools
+geopandas.sjoin
+geopandas.sjoin_nearest
+geopandas.overlay
+geopandas.clip
+geopandas.tools.geocode
+geopandas.tools.reverse_geocode
+geopandas.tools.collect
+geopandas.points_from_xy
+Spatial index
+Constructor
+Spatial index object
+Testing
+geopandas.testing.assert_geoseries_equal
+geopandas.testing.assert_geodataframe_equal
+previous
+Migration from the Fiona to the Pyogrio read/write engine
+next
+GeoSeries
+This Page
+Show Source

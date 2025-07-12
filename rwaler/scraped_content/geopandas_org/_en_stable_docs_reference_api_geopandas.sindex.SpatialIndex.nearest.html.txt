@@ -1,0 +1,204 @@
+Documentation
+API reference
+Spatial index
+geopandas.sindex.SpatialIndex.nearest
+geopandas.sindex.SpatialIndex.nearest
+#
+SpatialIndex.
+nearest
+(
+geometry
+,
+return_all
+=
+True
+,
+max_distance
+=
+None
+,
+return_distance
+=
+False
+,
+exclusive
+=
+False
+)
+[source]
+#
+Return the nearest geometry in the tree for each input geometry in
+geometry
+.
+If multiple tree geometries have the same distance from an input geometry,
+multiple results will be returned for that input geometry by default.
+Specify
+return_all=False
+to only get a single nearest geometry
+(non-deterministic which nearest is returned).
+In the context of a spatial join, input geometries are the “left”
+geometries that determine the order of the results, and tree geometries
+are “right” geometries that are joined against the left geometries.
+If
+max_distance
+is not set, this will effectively be a left join
+because every geometry in
+geometry
+will have a nearest geometry in
+the tree. However, if
+max_distance
+is used, this becomes an
+inner join, since some geometries in
+geometry
+may not have a match
+in the tree.
+For performance reasons, it is highly recommended that you set
+the
+max_distance
+parameter.
+Parameters
+:
+geometry
+{shapely.geometry, GeoSeries, GeometryArray, numpy.array of Shapely geometries}
+A single shapely geometry, one of the GeoPandas geometry iterables
+(GeoSeries, GeometryArray), or a numpy array of Shapely geometries to query
+against the spatial index.
+return_all
+bool, default True
+If there are multiple equidistant or intersecting nearest
+geometries, return all those geometries instead of a single
+nearest geometry.
+max_distance
+float, optional
+Maximum distance within which to query for nearest items in tree.
+Must be greater than 0. By default None, indicating no distance limit.
+return_distance
+bool, optional
+If True, will return distances in addition to indexes. By default False
+exclusive
+bool, optional
+if True, the nearest geometries that are equal to the input geometry
+will not be returned. By default False.  Requires Shapely >= 2.0.
+Returns
+:
+Indices or tuple of (indices, distances)
+Indices is an ndarray of shape (2,n) and distances (if present) an
+ndarray of shape (n).
+The first subarray of indices contains input geometry indices.
+The second subarray of indices contains tree geometry indices.
+Examples
+>>>
+from
+shapely.geometry
+import
+Point
+,
+box
+>>>
+s
+=
+geopandas
+.
+GeoSeries
+(
+geopandas
+.
+points_from_xy
+(
+range
+(
+10
+),
+range
+(
+10
+)))
+>>>
+s
+.
+head
+()
+0    POINT (0 0)
+1    POINT (1 1)
+2    POINT (2 2)
+3    POINT (3 3)
+4    POINT (4 4)
+dtype: geometry
+>>>
+s
+.
+sindex
+.
+nearest
+(
+Point
+(
+1
+,
+1
+))
+array([[0],
+[1]])
+>>>
+s
+.
+sindex
+.
+nearest
+([
+box
+(
+4.9
+,
+4.9
+,
+5.1
+,
+5.1
+)])
+array([[0],
+[5]])
+>>>
+s2
+=
+geopandas
+.
+GeoSeries
+(
+geopandas
+.
+points_from_xy
+([
+7.6
+,
+10
+],
+[
+7.6
+,
+10
+]))
+>>>
+s2
+0    POINT (7.6 7.6)
+1    POINT (10 10)
+dtype: geometry
+>>>
+s
+.
+sindex
+.
+nearest
+(
+s2
+)
+array([[0, 1],
+[8, 9]])
+previous
+geopandas.sindex.SpatialIndex.is_empty
+next
+geopandas.sindex.SpatialIndex.query
+On this page
+SpatialIndex.nearest()
+This Page
+Show Source

@@ -1,0 +1,79 @@
+Documentation
+API reference
+Spatial index
+geopandas.sindex.SpatialIndex.is_empty
+geopandas.sindex.SpatialIndex.is_empty
+#
+property
+SpatialIndex.
+is_empty
+[source]
+#
+Check if the spatial index is empty.
+Examples
+>>>
+from
+shapely.geometry
+import
+Point
+>>>
+s
+=
+geopandas
+.
+GeoSeries
+(
+geopandas
+.
+points_from_xy
+(
+range
+(
+10
+),
+range
+(
+10
+)))
+>>>
+s
+0    POINT (0 0)
+1    POINT (1 1)
+2    POINT (2 2)
+3    POINT (3 3)
+4    POINT (4 4)
+5    POINT (5 5)
+6    POINT (6 6)
+7    POINT (7 7)
+8    POINT (8 8)
+9    POINT (9 9)
+dtype: geometry
+>>>
+s
+.
+sindex
+.
+is_empty
+False
+>>>
+s2
+=
+geopandas
+.
+GeoSeries
+()
+>>>
+s2
+.
+sindex
+.
+is_empty
+True
+previous
+geopandas.sindex.SpatialIndex.intersection
+next
+geopandas.sindex.SpatialIndex.nearest
+On this page
+SpatialIndex.is_empty
+This Page
+Show Source

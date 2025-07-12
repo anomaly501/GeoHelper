@@ -1,0 +1,187 @@
+Documentation
+API reference
+GeoDataFrame
+geopandas.GeoDataFrame.explode
+geopandas.GeoDataFrame.explode
+#
+GeoDataFrame.
+explode
+(
+column
+=
+None
+,
+ignore_index
+=
+False
+,
+index_parts
+=
+False
+,
+**
+kwargs
+)
+[source]
+#
+Explode multi-part geometries into multiple single geometries.
+Each row containing a multi-part geometry will be split into
+multiple rows with single geometries, thereby increasing the vertical
+size of the GeoDataFrame.
+Parameters
+:
+column
+string, default None
+Column to explode. In the case of a geometry column, multi-part
+geometries are converted to single-part.
+If None, the active geometry column is used.
+ignore_index
+bool, default False
+If True, the resulting index will be labelled 0, 1, …, n - 1,
+ignoring
+index_parts
+.
+index_parts
+boolean, default False
+If True, the resulting index will be a multi-index (original
+index with an additional level indicating the multiple
+geometries: a new zero-based index for each single part geometry
+per multi-part geometry).
+Returns
+:
+GeoDataFrame
+Exploded geodataframe with each single geometry
+as a separate entry in the geodataframe.
+See also
+GeoDataFrame.dissolve
+dissolve geometries into a single observation.
+Examples
+>>>
+from
+shapely.geometry
+import
+MultiPoint
+>>>
+d
+=
+{
+...
+"col1"
+:
+[
+"name1"
+,
+"name2"
+],
+...
+"geometry"
+:
+[
+...
+MultiPoint
+([(
+1
+,
+2
+),
+(
+3
+,
+4
+)]),
+...
+MultiPoint
+([(
+2
+,
+1
+),
+(
+0
+,
+0
+)]),
+...
+],
+...
+}
+>>>
+gdf
+=
+geopandas
+.
+GeoDataFrame
+(
+d
+,
+crs
+=
+4326
+)
+>>>
+gdf
+col1               geometry
+0  name1  MULTIPOINT ((1 2), (3 4))
+1  name2  MULTIPOINT ((2 1), (0 0))
+>>>
+exploded
+=
+gdf
+.
+explode
+(
+index_parts
+=
+True
+)
+>>>
+exploded
+col1     geometry
+0 0  name1  POINT (1 2)
+1  name1  POINT (3 4)
+1 0  name2  POINT (2 1)
+1  name2  POINT (0 0)
+>>>
+exploded
+=
+gdf
+.
+explode
+(
+index_parts
+=
+False
+)
+>>>
+exploded
+col1     geometry
+0  name1  POINT (1 2)
+0  name1  POINT (3 4)
+1  name2  POINT (2 1)
+1  name2  POINT (0 0)
+>>>
+exploded
+=
+gdf
+.
+explode
+(
+ignore_index
+=
+True
+)
+>>>
+exploded
+col1     geometry
+0  name1  POINT (1 2)
+1  name1  POINT (3 4)
+2  name2  POINT (2 1)
+3  name2  POINT (0 0)
+previous
+geopandas.GeoDataFrame.dissolve
+next
+geopandas.GeoDataFrame.sjoin
+On this page
+GeoDataFrame.explode()
+This Page
+Show Source

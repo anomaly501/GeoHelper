@@ -1,0 +1,92 @@
+Getting Started
+Getting Started
+#
+Installation
+#
+GeoPandas is written in pure Python, but has several dependencies written in C
+(
+GEOS
+,
+GDAL
+,
+PROJ
+).  Those base C libraries can sometimes be a challenge to
+install. Therefore, we advise you to closely follow the recommendations below to avoid
+installation problems.
+Easy way
+#
+The best way to install GeoPandas is using
+conda
+and
+conda-forge
+channel:
+conda
+install
+-
+c
+conda
+-
+forge
+geopandas
+Detailed instructions
+#
+Do you prefer
+pip
+install
+or installation from source? Or want to install a specific version? See
+detailed instructions
+.
+What now?
+#
+If you don’t have GeoPandas yet, check
+Installation
+.
+If you have never used GeoPandas and want to get familiar with it and its core
+functionality quickly, see
+Getting Started Tutorial
+.
+Detailed illustration of how to work with different parts of GeoPandas, make maps,
+manage projections, spatially merge data or geocode are part of our
+User Guide
+.
+And if you are interested in the complete
+documentation of all classes, functions, method and attributes GeoPandas offers,
+API Reference
+is here for you.
+Installation
+Introduction
+User Guide
+API Reference
+Get in touch
+#
+Haven’t found what you were looking for?
+Ask usage questions (“How do I?”) on
+StackOverflow
+or
+GIS StackExchange
+.
+Get involved in
+discussions on GitHub
+Report bugs, suggest features or view the source code on
+GitHub
+.
+For a quick question about a bug report or feature request, or Pull Request,
+head over to the
+gitter channel
+.
+For less well defined questions or ideas, or to announce other projects of
+interest to GeoPandas users, … use the
+mailing list
+.
+previous
+GeoPandas logo
+next
+Installation
+On this page
+Installation
+Easy way
+Detailed instructions
+What now?
+Get in touch
+This Page
+Show Source

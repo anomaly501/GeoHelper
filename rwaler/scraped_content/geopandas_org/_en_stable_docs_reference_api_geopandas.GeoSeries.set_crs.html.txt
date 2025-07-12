@@ -1,0 +1,22 @@
+Documentation
+API reference
+GeoSeries
+geopandas.GeoSeries.set_crs
+geopandas.GeoSeries.set_crs
+#
+GeoSeries.
+set_crs
+(
+**
+kwargs
+)
+[source]
+#
+previous
+geopandas.GeoSeries.crs
+next
+geopandas.GeoSeries.to_crs
+On this page
+GeoSeries.set_crs()
+This Page
+Show Source

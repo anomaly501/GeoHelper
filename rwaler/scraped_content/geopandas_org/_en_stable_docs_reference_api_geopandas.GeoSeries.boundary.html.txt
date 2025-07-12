@@ -1,0 +1,106 @@
+Documentation
+API reference
+GeoSeries
+geopandas.GeoSeries.boundary
+geopandas.GeoSeries.boundary
+#
+property
+GeoSeries.
+boundary
+[source]
+#
+Return a
+GeoSeries
+of lower dimensional objects representing
+each geometry’s set-theoretic
+boundary
+.
+See also
+GeoSeries.exterior
+outer boundary (without interior rings)
+Examples
+>>>
+from
+shapely.geometry
+import
+Polygon
+,
+LineString
+,
+Point
+>>>
+s
+=
+geopandas
+.
+GeoSeries
+(
+...
+[
+...
+Polygon
+([(
+0
+,
+0
+),
+(
+1
+,
+1
+),
+(
+0
+,
+1
+)]),
+...
+LineString
+([(
+0
+,
+0
+),
+(
+1
+,
+1
+),
+(
+1
+,
+0
+)]),
+...
+Point
+(
+0
+,
+0
+),
+...
+]
+...
+)
+>>>
+s
+0    POLYGON ((0 0, 1 1, 0 1, 0 0))
+1        LINESTRING (0 0, 1 1, 1 0)
+2                       POINT (0 0)
+dtype: geometry
+>>>
+s
+.
+boundary
+0    LINESTRING (0 0, 1 1, 0 1, 0 0)
+1          MULTIPOINT ((0 0), (1 0))
+2           GEOMETRYCOLLECTION EMPTY
+dtype: geometry
+previous
+geopandas.GeoSeries.area
+next
+geopandas.GeoSeries.bounds
+On this page
+GeoSeries.boundary
+This Page
+Show Source

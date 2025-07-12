@@ -1,0 +1,107 @@
+Documentation
+API reference
+GeoDataFrame
+geopandas.GeoDataFrame.to_geo_dict
+geopandas.GeoDataFrame.to_geo_dict
+#
+GeoDataFrame.
+to_geo_dict
+(
+na
+=
+'null'
+,
+show_bbox
+=
+False
+,
+drop_id
+=
+False
+)
+[source]
+#
+Return a python feature collection representation of the GeoDataFrame
+as a dictionary with a list of features based on the
+__geo_interface__
+GeoJSON-like specification.
+Parameters
+:
+na
+str, optional
+Options are {‘null’, ‘drop’, ‘keep’}, default ‘null’.
+Indicates how to output missing (NaN) values in the GeoDataFrame
+null: output the missing entries as JSON null
+drop: remove the property from the feature. This applies to each feature individually so that features may have different properties
+keep: output the missing entries as NaN
+show_bbox
+bool, optional
+Include bbox (bounds) in the geojson. Default False.
+drop_id
+bool, default: False
+Whether to retain the index of the GeoDataFrame as the id property
+in the generated dictionary. Default is False, but may want True
+if the index is just arbitrary row numbers.
+See also
+GeoDataFrame.to_json
+return a GeoDataFrame as a GeoJSON string
+Examples
+>>>
+from
+shapely.geometry
+import
+Point
+>>>
+d
+=
+{
+'col1'
+:
+[
+'name1'
+,
+'name2'
+],
+'geometry'
+:
+[
+Point
+(
+1
+,
+2
+),
+Point
+(
+2
+,
+1
+)]}
+>>>
+gdf
+=
+geopandas
+.
+GeoDataFrame
+(
+d
+)
+>>>
+gdf
+col1     geometry
+0  name1  POINT (1 2)
+1  name2  POINT (2 1)
+>>>
+gdf
+.
+to_geo_dict
+()
+{'type': 'FeatureCollection', 'features': [{'id': '0', 'type': 'Feature', 'properties': {'col1': 'name1'}, 'geometry': {'type': 'Point', 'coordinates': (1.0, 2.0)}}, {'id': '1', 'type': 'Feature', 'properties': {'col1': 'name2'}, 'geometry': {'type': 'Point', 'coordinates': (2.0, 1.0)}}]}
+previous
+geopandas.GeoDataFrame.to_json
+next
+geopandas.GeoDataFrame.to_parquet
+On this page
+GeoDataFrame.to_geo_dict()
+This Page
+Show Source

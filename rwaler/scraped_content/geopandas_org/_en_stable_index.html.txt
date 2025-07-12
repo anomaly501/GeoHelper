@@ -1,0 +1,47 @@
+GeoPandas 1.1.1
+#
+GeoPandas is an open source project to make working with geospatial
+data in python easier.  GeoPandas extends the datatypes used by
+pandas
+to allow spatial operations on geometric types.  Geometric
+operations are performed by
+shapely
+.  Geopandas further depends on
+pyogrio
+for file access and
+matplotlib
+for plotting.
+Description
+#
+The goal of GeoPandas is to make working with geospatial data in
+python easier.  It combines the capabilities of pandas and shapely,
+providing geospatial operations in pandas and a high-level interface
+to multiple geometries to shapely.  GeoPandas enables you to easily do
+operations in python that would otherwise require a spatial database
+such as PostGIS.
+Getting started
+Documentation
+About GeoPandas
+Community
+Useful links
+#
+Binary Installers (PyPI)
+|
+Source Repository (GitHub)
+|
+Issues & Ideas
+|
+Q&A Support
+Supported by
+#
+The GeoPandas project uses an
+open governance model
+and is fiscally
+sponsored by
+NumFOCUS
+. Consider making a
+tax-deductible donation
+to help the project pay for developer time, professional services,
+travel, workshops, and a variety of other needs.
+next
+About GeoPandas

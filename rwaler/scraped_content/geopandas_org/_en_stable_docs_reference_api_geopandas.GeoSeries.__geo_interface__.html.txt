@@ -1,0 +1,70 @@
+Documentation
+API reference
+GeoSeries
+geopandas.GeoSeries.__geo_interface__
+geopandas.GeoSeries.__geo_interface__
+#
+property
+GeoSeries.
+__geo_interface__
+[source]
+#
+Returns a
+GeoSeries
+as a python feature collection.
+Implements the
+geo_interface
+. The returned python data structure
+represents the
+GeoSeries
+as a GeoJSON-like
+FeatureCollection
+.
+Note that the features will have an empty
+properties
+dict as they
+don’t have associated attributes (geometry only).
+Examples
+>>>
+from
+shapely.geometry
+import
+Point
+>>>
+s
+=
+geopandas
+.
+GeoSeries
+([
+Point
+(
+1
+,
+1
+),
+Point
+(
+2
+,
+2
+),
+Point
+(
+3
+,
+3
+)])
+>>>
+s
+.
+__geo_interface__
+{'type': 'FeatureCollection', 'features': [{'id': '0', 'type': 'Feature', 'properties': {}, 'geometry': {'type': 'Point', 'coordinates': (1.0, 1.0)}, 'bbox': (1.0, 1.0, 1.0, 1.0)}, {'id': '1', 'type': 'Feature', 'properties': {}, 'geometry': {'type': 'Point', 'coordinates': (2.0, 2.0)}, 'bbox': (2.0, 2.0, 2.0, 2.0)}, {'id': '2', 'type': 'Feature', 'properties': {}, 'geometry': {'type': 'Point', 'coordinates': (3.0, 3.0)}, 'bbox': (3.0, 3.0, 3.0, 3.0)}], 'bbox': (1.0, 1.0, 3.0, 3.0)}
+previous
+geopandas.GeoSeries.cx
+next
+GeoDataFrame
+On this page
+GeoSeries.__geo_interface__
+This Page
+Show Source

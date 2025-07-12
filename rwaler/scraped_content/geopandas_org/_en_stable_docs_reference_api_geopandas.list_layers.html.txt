@@ -1,0 +1,43 @@
+Documentation
+API reference
+Input/output
+geopandas.list_layers
+geopandas.list_layers
+#
+geopandas.
+list_layers
+(
+filename
+)
+[source]
+#
+List layers available in a file.
+Provides an overview of layers available in a file or URL together with their
+geometry types. When supported by the data source, this includes both spatial and
+non-spatial layers. Non-spatial layers are indicated by the
+"geometry_type"
+column being
+None
+. GeoPandas will not read such layers but they can be read into
+a pd.DataFrame using
+pyogrio.read_dataframe()
+.
+Parameters
+:
+filename
+str, path object or file-like object
+Either the absolute or relative path to the file or URL to
+be opened, or any object with a read() method (such as an open file
+or StringIO)
+Returns
+:
+pandas.DataFrame
+A DataFrame with columns “name” and “geometry_type” and one row per layer.
+previous
+Input/output
+next
+geopandas.read_file
+On this page
+list_layers()
+This Page
+Show Source

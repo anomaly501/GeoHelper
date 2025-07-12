@@ -1,0 +1,120 @@
+Documentation
+API reference
+GeoDataFrame
+geopandas.GeoDataFrame.cx
+geopandas.GeoDataFrame.cx
+#
+property
+GeoDataFrame.
+cx
+[source]
+#
+Coordinate based indexer to select by intersection with bounding box.
+Format of input should be
+.cx[xmin:xmax,
+ymin:ymax]
+. Any of
+xmin
+,
+xmax
+,
+ymin
+, and
+ymax
+can be provided, but input
+must include a comma separating x and y slices. That is,
+.cx[:,
+:]
+will return the full series/frame, but
+.cx[:]
+is not implemented.
+Examples
+>>>
+from
+shapely.geometry
+import
+LineString
+,
+Point
+>>>
+s
+=
+geopandas
+.
+GeoSeries
+(
+...
+[
+Point
+(
+0
+,
+0
+),
+Point
+(
+1
+,
+2
+),
+Point
+(
+3
+,
+3
+),
+LineString
+([(
+0
+,
+0
+),
+(
+3
+,
+3
+)])]
+...
+)
+>>>
+s
+0              POINT (0 0)
+1              POINT (1 2)
+2              POINT (3 3)
+3    LINESTRING (0 0, 3 3)
+dtype: geometry
+>>>
+s
+.
+cx
+[
+0
+:
+1
+,
+0
+:
+1
+]
+0              POINT (0 0)
+3    LINESTRING (0 0, 3 3)
+dtype: geometry
+>>>
+s
+.
+cx
+[:,
+1
+:]
+1              POINT (1 2)
+2              POINT (3 3)
+3    LINESTRING (0 0, 3 3)
+dtype: geometry
+previous
+geopandas.GeoDataFrame.has_sindex
+next
+geopandas.GeoDataFrame.__geo_interface__
+On this page
+GeoDataFrame.cx
+This Page
+Show Source

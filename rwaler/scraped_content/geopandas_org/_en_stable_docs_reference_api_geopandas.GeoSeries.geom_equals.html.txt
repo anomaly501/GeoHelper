@@ -1,0 +1,302 @@
+Documentation
+API reference
+GeoSeries
+geopandas.GeoSeries.geom_equals
+geopandas.GeoSeries.geom_equals
+#
+GeoSeries.
+geom_equals
+(
+other
+,
+align
+=
+None
+)
+[source]
+#
+Return a
+Series
+of
+dtype('bool')
+with value
+True
+for
+each aligned geometry equal to
+other
+.
+An object is said to be equal to
+other
+if its set-theoretic
+boundary
+,
+interior
+, and
+exterior
+coincides with those of the
+other.
+The operation works on a 1-to-1 row-wise manner:
+Parameters
+:
+other
+GeoSeries or geometric object
+The GeoSeries (elementwise) or geometric object to test for
+equality.
+align
+bool | None (default None)
+If True, automatically aligns GeoSeries based on their indices.
+If False, the order of elements is preserved. None defaults to True.
+Returns
+:
+Series (bool)
+See also
+GeoSeries.geom_equals_exact
+GeoSeries.geom_equals_identical
+Notes
+This method works in a row-wise manner. It does not check if an element
+of one GeoSeries is equal to
+any
+element of the other one.
+Examples
+>>>
+from
+shapely.geometry
+import
+Polygon
+,
+LineString
+,
+Point
+>>>
+s
+=
+geopandas
+.
+GeoSeries
+(
+...
+[
+...
+Polygon
+([(
+0
+,
+0
+),
+(
+2
+,
+2
+),
+(
+0
+,
+2
+)]),
+...
+Polygon
+([(
+0
+,
+0
+),
+(
+1
+,
+2
+),
+(
+0
+,
+2
+)]),
+...
+LineString
+([(
+0
+,
+0
+),
+(
+0
+,
+2
+)]),
+...
+Point
+(
+0
+,
+1
+),
+...
+],
+...
+)
+>>>
+s2
+=
+geopandas
+.
+GeoSeries
+(
+...
+[
+...
+Polygon
+([(
+0
+,
+0
+),
+(
+2
+,
+2
+),
+(
+0
+,
+2
+)]),
+...
+Polygon
+([(
+0
+,
+0
+),
+(
+1
+,
+2
+),
+(
+0
+,
+2
+)]),
+...
+Point
+(
+0
+,
+1
+),
+...
+LineString
+([(
+0
+,
+0
+),
+(
+0
+,
+2
+)]),
+...
+],
+...
+index
+=
+range
+(
+1
+,
+5
+),
+...
+)
+>>>
+s
+0    POLYGON ((0 0, 2 2, 0 2, 0 0))
+1    POLYGON ((0 0, 1 2, 0 2, 0 0))
+2             LINESTRING (0 0, 0 2)
+3                       POINT (0 1)
+dtype: geometry
+>>>
+s2
+1    POLYGON ((0 0, 2 2, 0 2, 0 0))
+2    POLYGON ((0 0, 1 2, 0 2, 0 0))
+3                       POINT (0 1)
+4             LINESTRING (0 0, 0 2)
+dtype: geometry
+We can check if each geometry of GeoSeries contains a single
+geometry:
+>>>
+polygon
+=
+Polygon
+([(
+0
+,
+0
+),
+(
+2
+,
+2
+),
+(
+0
+,
+2
+)])
+>>>
+s
+.
+geom_equals
+(
+polygon
+)
+0     True
+1    False
+2    False
+3    False
+dtype: bool
+We can also check two GeoSeries against each other, row by row.
+The GeoSeries above have different indices. We can either align both GeoSeries
+based on index values and compare elements with the same index using
+align=True
+or ignore index and compare elements based on their matching
+order using
+align=False
+:
+>>>
+s
+.
+geom_equals
+(
+s2
+)
+0    False
+1    False
+2    False
+3     True
+4    False
+dtype: bool
+>>>
+s
+.
+geom_equals
+(
+s2
+,
+align
+=
+False
+)
+0     True
+1     True
+2    False
+3    False
+dtype: bool
+previous
+geopandas.GeoSeries.dwithin
+next
+geopandas.GeoSeries.geom_equals_exact
+On this page
+GeoSeries.geom_equals()
+This Page
+Show Source

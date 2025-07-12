@@ -1,0 +1,176 @@
+Documentation
+API reference
+GeoDataFrame
+geopandas.GeoDataFrame.set_geometry
+geopandas.GeoDataFrame.set_geometry
+#
+GeoDataFrame.
+set_geometry
+(
+col
+,
+drop
+=
+None
+,
+inplace
+=
+False
+,
+crs
+=
+None
+)
+[source]
+#
+Set the GeoDataFrame geometry using either an existing column or
+the specified input. By default yields a new object.
+The original geometry column is replaced with the input.
+Parameters
+:
+col
+column label or array-like
+An existing column name or values to set as the new geometry column.
+If values (array-like, (Geo)Series) are passed, then if they are named
+(Series) the new geometry column will have the corresponding name,
+otherwise the existing geometry column will be replaced. If there is
+no existing geometry column, the new geometry column will use the
+default name “geometry”.
+drop
+boolean, default False
+When specifying a named Series or an existing column name for
+col
+,
+controls if the previous geometry column should be dropped from the
+result. The default of False keeps both the old and new geometry column.
+Deprecated since version 1.0.0.
+inplace
+boolean, default False
+Modify the GeoDataFrame in place (do not create a new object)
+crs
+pyproj.CRS, optional
+Coordinate system to use. The value can be anything accepted
+by
+pyproj.CRS.from_user_input()
+,
+such as an authority string (eg “EPSG:4326”) or a WKT string.
+If passed, overrides both DataFrame and col’s crs.
+Otherwise, tries to get crs from passed col values or DataFrame.
+Returns
+:
+GeoDataFrame
+See also
+GeoDataFrame.rename_geometry
+rename an active geometry column
+Examples
+>>>
+from
+shapely.geometry
+import
+Point
+>>>
+d
+=
+{
+'col1'
+:
+[
+'name1'
+,
+'name2'
+],
+'geometry'
+:
+[
+Point
+(
+1
+,
+2
+),
+Point
+(
+2
+,
+1
+)]}
+>>>
+gdf
+=
+geopandas
+.
+GeoDataFrame
+(
+d
+,
+crs
+=
+"EPSG:4326"
+)
+>>>
+gdf
+col1     geometry
+0  name1  POINT (1 2)
+1  name2  POINT (2 1)
+Passing an array:
+>>>
+df1
+=
+gdf
+.
+set_geometry
+([
+Point
+(
+0
+,
+0
+),
+Point
+(
+1
+,
+1
+)])
+>>>
+df1
+col1     geometry
+0  name1  POINT (0 0)
+1  name2  POINT (1 1)
+Using existing column:
+>>>
+gdf
+[
+"buffered"
+]
+=
+gdf
+.
+buffer
+(
+2
+)
+>>>
+df2
+=
+gdf
+.
+set_geometry
+(
+"buffered"
+)
+>>>
+df2
+.
+geometry
+0    POLYGON ((3 2, 2.99037 1.80397, 2.96157 1.6098...
+1    POLYGON ((4 1, 3.99037 0.80397, 3.96157 0.6098...
+Name: buffered, dtype: geometry
+previous
+geopandas.GeoDataFrame.rename_geometry
+next
+geopandas.GeoDataFrame.active_geometry_name
+On this page
+GeoDataFrame.set_geometry()
+This Page
+Show Source

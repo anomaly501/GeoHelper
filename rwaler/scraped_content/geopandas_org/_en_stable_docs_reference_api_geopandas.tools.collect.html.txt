@@ -1,0 +1,35 @@
+Documentation
+API reference
+Tools
+geopandas.tools.collect
+geopandas.tools.collect
+#
+geopandas.tools.
+collect
+(
+x
+,
+multi
+=
+False
+)
+[source]
+#
+Collect single part geometries into their Multi* counterpart.
+Parameters
+:
+x
+an iterable or Series of Shapely geometries, a GeoSeries, or
+a single Shapely geometry
+multi
+boolean, default False
+if True, force returned geometries to be Multi* even if they
+only have one component.
+previous
+geopandas.tools.reverse_geocode
+next
+geopandas.points_from_xy
+On this page
+collect()
+This Page
+Show Source

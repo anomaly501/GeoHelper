@@ -1,0 +1,43 @@
+Documentation
+API reference
+GeoSeries
+geopandas.GeoSeries.to_wkb
+geopandas.GeoSeries.to_wkb
+#
+GeoSeries.
+to_wkb
+(
+hex
+=
+False
+,
+**
+kwargs
+)
+[source]
+#
+Convert GeoSeries geometries to WKB.
+Parameters
+:
+hex
+bool
+If true, export the WKB as a hexadecimal string.
+The default is to return a binary bytes object.
+kwargs
+Additional keyword args will be passed to
+shapely.to_wkb()
+.
+Returns
+:
+Series
+WKB representations of the geometries
+See also
+GeoSeries.to_wkt
+previous
+geopandas.GeoSeries.to_json
+next
+geopandas.GeoSeries.to_wkt
+On this page
+GeoSeries.to_wkb()
+This Page
+Show Source

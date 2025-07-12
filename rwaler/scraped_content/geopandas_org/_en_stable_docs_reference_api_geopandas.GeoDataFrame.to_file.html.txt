@@ -1,0 +1,198 @@
+Documentation
+API reference
+GeoDataFrame
+geopandas.GeoDataFrame.to_file
+geopandas.GeoDataFrame.to_file
+#
+GeoDataFrame.
+to_file
+(
+filename
+,
+driver
+=
+None
+,
+schema
+=
+None
+,
+index
+=
+None
+,
+**
+kwargs
+)
+[source]
+#
+Write the
+GeoDataFrame
+to a file.
+By default, an ESRI shapefile is written, but any OGR data source
+supported by Pyogrio or Fiona can be written. A dictionary of supported OGR
+providers is available via:
+>>>
+import
+pyogrio
+>>>
+pyogrio
+.
+list_drivers
+()
+Parameters
+:
+filename
+string
+File path or file handle to write to. The path may specify a
+GDAL VSI scheme.
+driver
+string, default None
+The OGR format driver used to write the vector file.
+If not specified, it attempts to infer it from the file extension.
+If no extension is specified, it saves ESRI Shapefile to a folder.
+schema
+dict, default None
+If specified, the schema dictionary is passed to Fiona to
+better control how the file is written. If None, GeoPandas
+will determine the schema based on each column’s dtype.
+Not supported for the “pyogrio” engine.
+index
+bool, default None
+If True, write index into one or more columns (for MultiIndex).
+Default None writes the index into one or more columns only if
+the index is named, is a MultiIndex, or has a non-integer data
+type. If False, no index is written.
+Added in version 0.7:
+Previously the index was not written.
+mode
+string, default ‘w’
+The write mode, ‘w’ to overwrite the existing file and ‘a’ to append.
+Not all drivers support appending. The drivers that support appending
+are listed in fiona.supported_drivers or
+Toblerity/Fiona
+crs
+pyproj.CRS, default None
+If specified, the CRS is passed to Fiona to
+better control how the file is written. If None, GeoPandas
+will determine the crs based on crs df attribute.
+The value can be anything accepted
+by
+pyproj.CRS.from_user_input()
+,
+such as an authority string (eg “EPSG:4326”) or a WKT string. The keyword
+is not supported for the “pyogrio” engine.
+engine
+str, “pyogrio” or “fiona”
+The underlying library that is used to write the file. Currently, the
+supported options are “pyogrio” and “fiona”. Defaults to “pyogrio” if
+installed, otherwise tries “fiona”.
+metadata
+dict[str, str], default None
+Optional metadata to be stored in the file. Keys and values must be
+strings. Supported only for “GPKG” driver.
+**kwargs
+Keyword args to be passed to the engine, and can be used to write
+to multi-layer data, store data within archives (zip files), etc.
+In case of the “pyogrio” engine, the keyword arguments are passed to
+pyogrio.write_dataframe
+. In case of the “fiona” engine, the keyword
+arguments are passed to fiona.open`. For more information on possible
+keywords, type:
+import
+pyogrio;
+help(pyogrio.write_dataframe)
+.
+See also
+GeoSeries.to_file
+GeoDataFrame.to_postgis
+write GeoDataFrame to PostGIS database
+GeoDataFrame.to_parquet
+write GeoDataFrame to parquet
+GeoDataFrame.to_feather
+write GeoDataFrame to feather
+Notes
+The format drivers will attempt to detect the encoding of your data, but
+may fail. In this case, the proper encoding can be specified explicitly
+by using the encoding keyword parameter, e.g.
+encoding='utf-8'
+.
+Examples
+>>>
+gdf
+.
+to_file
+(
+'dataframe.shp'
+)
+>>>
+gdf
+.
+to_file
+(
+'dataframe.gpkg'
+,
+driver
+=
+'GPKG'
+,
+layer
+=
+'name'
+)
+>>>
+gdf
+.
+to_file
+(
+'dataframe.geojson'
+,
+driver
+=
+'GeoJSON'
+)
+With selected drivers you can also append to a file with
+mode=”a”
+:
+>>>
+gdf
+.
+to_file
+(
+'dataframe.shp'
+,
+mode
+=
+"a"
+)
+Using the engine-specific keyword arguments it is possible to e.g. create a
+spatialite file with a custom layer name:
+>>>
+gdf
+.
+to_file
+(
+...
+'dataframe.sqlite'
+,
+driver
+=
+'SQLite'
+,
+spatialite
+=
+True
+,
+layer
+=
+'test'
+...
+)
+previous
+geopandas.GeoDataFrame.from_arrow
+next
+geopandas.GeoDataFrame.to_json
+On this page
+GeoDataFrame.to_file()
+This Page
+Show Source

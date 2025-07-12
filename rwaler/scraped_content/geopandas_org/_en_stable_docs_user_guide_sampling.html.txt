@@ -1,0 +1,289 @@
+Documentation
+User guide
+Sampling Points
+Note
+This page was generated from
+docs/user_guide/sampling.ipynb
+.
+Interactive online version:
+Sampling Points
+#
+Learn how to sample random points using GeoPandas.
+The example below shows you how to sample random locations from shapes in GeoPandas GeoDataFrames.
+Import Packages
+#
+To begin with, we need to import packages we’ll use:
+[1]:
+import
+geopandas
+import
+geodatasets
+For this example, we will use the New York Borough example data (
+nybb
+) provided by geodatasets.
+[2]:
+nybb
+=
+geopandas
+.
+read_file
+(
+geodatasets
+.
+get_path
+(
+"nybb"
+))
+# simplify geometry to save space when rendering many interactive maps
+nybb
+.
+geometry
+=
+nybb
+.
+simplify
+(
+200
+)
+To see what this looks like, visualize the data:
+[3]:
+nybb
+.
+explore
+()
+[3]:
+Make this Notebook Trusted to load map: File -> Trust Notebook
+Sampling random points
+#
+To sample points from within a GeoDataFrame, use the
+sample_points()
+method. To specify the sample sizes, provide an explicit number of points to sample. For example, we can sample 200 points randomly from each feature:
+[4]:
+n200_sampled_points
+=
+nybb
+.
+sample_points
+(
+200
+)
+m
+=
+nybb
+.
+explore
+()
+n200_sampled_points
+.
+explore
+(
+m
+=
+m
+,
+color
+=
+'red'
+)
+[4]:
+Make this Notebook Trusted to load map: File -> Trust Notebook
+This functionality also works for line geometries. For example, let’s look only at the boundary of Manhattan Island:
+[5]:
+manhattan_parts
+=
+nybb
+.
+iloc
+[[
+3
+]]
+.
+explode
+(
+ignore_index
+=
+True
+)
+manhattan_island
+=
+manhattan_parts
+.
+iloc
+[[
+30
+]]
+manhattan_island
+.
+boundary
+.
+explore
+()
+[5]:
+Make this Notebook Trusted to load map: File -> Trust Notebook
+Sampling randomly from along this boundary can use the same
+sample_points()
+method:
+[6]:
+manhattan_border_points
+=
+manhattan_island
+.
+boundary
+.
+sample_points
+(
+200
+)
+m
+=
+manhattan_island
+.
+explore
+()
+manhattan_border_points
+.
+explore
+(
+m
+=
+m
+,
+color
+=
+'red'
+)
+[6]:
+Make this Notebook Trusted to load map: File -> Trust Notebook
+Keep in mind that sampled points are returned as a single multi-part geometry, and that the distances over the line segments are calculated
+along
+the line.
+[7]:
+manhattan_border_points
+[7]:
+30    MULTIPOINT ((978959.972 196396.728), (979234.4...
+Name: sampled_points, dtype: geometry
+If you want to separate out the individual sampled points, use the
+.explode()
+method on the dataframe:
+[8]:
+manhattan_border_points
+.
+explode
+(
+ignore_index
+=
+True
+)
+.
+head
+()
+[8]:
+0    POINT (978959.972 196396.728)
+1    POINT (979234.499 197588.852)
+2    POINT (979245.072 197754.102)
+3    POINT (979358.282 199226.509)
+4    POINT (979677.781 201084.175)
+Name: sampled_points, dtype: geometry
+Variable number of points
+#
+You can also sample different number of points from different geometries if you pass an array specifying the size of the sample per geometry.
+[9]:
+variable_size
+=
+nybb
+.
+sample_points
+([
+10
+,
+50
+,
+100
+,
+200
+,
+500
+])
+m
+=
+nybb
+.
+explore
+()
+variable_size
+.
+explore
+(
+m
+=
+m
+,
+color
+=
+'red'
+)
+[9]:
+Make this Notebook Trusted to load map: File -> Trust Notebook
+Sampling from more complicated point pattern processes
+#
+Finally, the
+sample_points()
+method can use different sampling processes than those described above, so long as they are implemented in the
+pointpats
+package for spatial point pattern analysis. For example, a “cluster-poisson” process is a spatially-random cluster process where the “seeds” of clusters are chosen randomly, and then points around these clusters are distributed according again randomly.
+To see what this looks like, consider the following, where ten points will be distributed around five seeds within each of the boroughs in New York City:
+[10]:
+sample_t
+=
+nybb
+.
+sample_points
+(
+method
+=
+'cluster_poisson'
+,
+size
+=
+50
+,
+n_seeds
+=
+5
+,
+cluster_radius
+=
+7500
+)
+[11]:
+m
+=
+nybb
+.
+explore
+()
+sample_t
+.
+explore
+(
+m
+=
+m
+,
+color
+=
+'red'
+)
+[11]:
+Make this Notebook Trusted to load map: File -> Trust Notebook
+previous
+Geocoding
+next
+How to…
+On this page
+Import Packages
+Sampling random points
+Variable number of points
+Sampling from more complicated point pattern processes
+This Page
+Show Source

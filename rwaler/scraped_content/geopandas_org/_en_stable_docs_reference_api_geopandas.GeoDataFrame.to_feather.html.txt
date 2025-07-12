@@ -1,0 +1,86 @@
+Documentation
+API reference
+GeoDataFrame
+geopandas.GeoDataFrame.to_feather
+geopandas.GeoDataFrame.to_feather
+#
+GeoDataFrame.
+to_feather
+(
+path
+,
+index
+=
+None
+,
+compression
+=
+None
+,
+schema_version
+=
+None
+,
+**
+kwargs
+)
+[source]
+#
+Write a GeoDataFrame to the Feather format.
+Any geometry columns present are serialized to WKB format in the file.
+Requires ‘pyarrow’ >= 0.17.
+Added in version 0.8.
+Parameters
+:
+path
+str, path object
+index
+bool, default None
+If
+True
+, always include the dataframe’s index(es) as columns
+in the file output.
+If
+False
+, the index(es) will not be written to the file.
+If
+None
+, the index(ex) will be included as columns in the file
+output except
+RangeIndex
+which is stored as metadata only.
+compression
+{‘zstd’, ‘lz4’, ‘uncompressed’}, optional
+Name of the compression to use. Use
+"uncompressed"
+for no
+compression. By default uses LZ4 if available, otherwise uncompressed.
+schema_version
+{‘0.1.0’, ‘0.4.0’, ‘1.0.0’, None}
+GeoParquet specification version; if not provided will default to
+latest supported version.
+kwargs
+Additional keyword arguments passed to
+pyarrow.feather.write_feather()
+.
+See also
+GeoDataFrame.to_parquet
+write GeoDataFrame to parquet
+GeoDataFrame.to_file
+write GeoDataFrame to file
+Examples
+>>>
+gdf
+.
+to_feather
+(
+'data.feather'
+)
+previous
+geopandas.GeoDataFrame.to_arrow
+next
+geopandas.GeoDataFrame.to_postgis
+On this page
+GeoDataFrame.to_feather()
+This Page
+Show Source

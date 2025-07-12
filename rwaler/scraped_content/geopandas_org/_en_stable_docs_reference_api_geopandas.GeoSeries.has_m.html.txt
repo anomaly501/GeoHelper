@@ -1,0 +1,73 @@
+Documentation
+API reference
+GeoSeries
+geopandas.GeoSeries.has_m
+geopandas.GeoSeries.has_m
+#
+property
+GeoSeries.
+has_m
+[source]
+#
+Return a
+Series
+of
+dtype('bool')
+with value
+True
+for
+features that have a m-component.
+Requires Shapely >= 2.1.
+Added in version 1.1.0.
+Examples
+>>>
+from
+shapely.geometry
+import
+Point
+>>>
+s
+=
+geopandas
+.
+GeoSeries
+.
+from_wkt
+(
+...
+[
+...
+"POINT M (2 3 5)"
+,
+...
+"POINT Z (1 2 3)"
+,
+...
+"POINT (0 0)"
+,
+...
+]
+...
+)
+>>>
+s
+0    POINT M (2 3 5)
+1    POINT Z (1 2 3)
+2        POINT (0 0)
+dtype: geometry
+>>>
+s
+.
+has_m
+0     True
+1    False
+2    False
+dtype: bool
+previous
+geopandas.GeoSeries.invalid_coverage_edges
+next
+geopandas.GeoSeries.has_z
+On this page
+GeoSeries.has_m
+This Page
+Show Source

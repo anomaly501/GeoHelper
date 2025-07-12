@@ -1,0 +1,35 @@
+Documentation
+API reference
+Tools
+Tools
+#
+sjoin
+(left_df, right_df[, how, predicate, ...])
+Spatial join of two GeoDataFrames.
+sjoin_nearest
+(left_df, right_df[, how, ...])
+Spatial join of two GeoDataFrames based on the distance between their geometries.
+overlay
+(df1, df2[, how, keep_geom_type, ...])
+Perform spatial overlay between two GeoDataFrames.
+clip
+(gdf, mask[, keep_geom_type, sort])
+Clip points, lines, or polygon geometries to the mask extent.
+tools.geocode
+(strings[, provider])
+Geocode a set of strings and get a GeoDataFrame of the resulting points.
+tools.reverse_geocode
+(points[, provider])
+Reverse geocode a set of points and get a GeoDataFrame of the resulting addresses.
+tools.collect
+(x[, multi])
+Collect single part geometries into their Multi* counterpart.
+points_from_xy
+(x, y[, z, crs])
+Generate GeometryArray of shapely Point geometries from x, y(, z) coordinates.
+previous
+geopandas.read_parquet
+next
+geopandas.sjoin
+This Page
+Show Source

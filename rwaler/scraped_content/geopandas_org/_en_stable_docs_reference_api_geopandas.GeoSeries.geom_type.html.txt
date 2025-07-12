@@ -1,0 +1,97 @@
+Documentation
+API reference
+GeoSeries
+geopandas.GeoSeries.geom_type
+geopandas.GeoSeries.geom_type
+#
+property
+GeoSeries.
+geom_type
+[source]
+#
+Returns a
+Series
+of strings specifying the
+Geometry Type
+of each
+object.
+Examples
+>>>
+from
+shapely.geometry
+import
+Point
+,
+Polygon
+,
+LineString
+>>>
+d
+=
+{
+'geometry'
+:
+[
+Point
+(
+2
+,
+1
+),
+Polygon
+([(
+0
+,
+0
+),
+(
+1
+,
+1
+),
+(
+1
+,
+0
+)]),
+...
+LineString
+([(
+0
+,
+0
+),
+(
+1
+,
+1
+)])]}
+>>>
+gdf
+=
+geopandas
+.
+GeoDataFrame
+(
+d
+,
+crs
+=
+"EPSG:4326"
+)
+>>>
+gdf
+.
+geom_type
+0         Point
+1       Polygon
+2    LineString
+dtype: object
+previous
+geopandas.GeoSeries.length
+next
+geopandas.GeoSeries.offset_curve
+On this page
+GeoSeries.geom_type
+This Page
+Show Source

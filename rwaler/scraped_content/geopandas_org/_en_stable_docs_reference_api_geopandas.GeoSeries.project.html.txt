@@ -1,0 +1,230 @@
+Documentation
+API reference
+GeoSeries
+geopandas.GeoSeries.project
+geopandas.GeoSeries.project
+#
+GeoSeries.
+project
+(
+other
+,
+normalized
+=
+False
+,
+align
+=
+None
+)
+[source]
+#
+Return the distance along each geometry nearest to
+other
+.
+The operation works on a 1-to-1 row-wise manner:
+The project method is the inverse of interpolate.
+In shapely, this is equal to
+line_locate_point
+.
+Parameters
+:
+other
+BaseGeometry or GeoSeries
+The
+other
+geometry to computed projected point from.
+normalized
+boolean
+If normalized is True, return the distance normalized to
+the length of the object.
+align
+bool | None (default None)
+If True, automatically aligns GeoSeries based on their indices.
+If False, the order of elements is preserved. None defaults to True.
+Returns
+:
+Series
+See also
+GeoSeries.interpolate
+Examples
+>>>
+from
+shapely.geometry
+import
+LineString
+,
+Point
+>>>
+s
+=
+geopandas
+.
+GeoSeries
+(
+...
+[
+...
+LineString
+([(
+0
+,
+0
+),
+(
+2
+,
+0
+),
+(
+0
+,
+2
+)]),
+...
+LineString
+([(
+0
+,
+0
+),
+(
+2
+,
+2
+)]),
+...
+LineString
+([(
+2
+,
+0
+),
+(
+0
+,
+2
+)]),
+...
+],
+...
+)
+>>>
+s2
+=
+geopandas
+.
+GeoSeries
+(
+...
+[
+...
+Point
+(
+1
+,
+0
+),
+...
+Point
+(
+1
+,
+0
+),
+...
+Point
+(
+2
+,
+1
+),
+...
+],
+...
+index
+=
+range
+(
+1
+,
+4
+),
+...
+)
+>>>
+s
+0    LINESTRING (0 0, 2 0, 0 2)
+1         LINESTRING (0 0, 2 2)
+2         LINESTRING (2 0, 0 2)
+dtype: geometry
+>>>
+s2
+1    POINT (1 0)
+2    POINT (1 0)
+3    POINT (2 1)
+dtype: geometry
+We can project each geometry on a single
+shapely geometry:
+>>>
+s
+.
+project
+(
+Point
+(
+1
+,
+0
+))
+0    1.000000
+1    0.707107
+2    0.707107
+dtype: float64
+We can also check two GeoSeries against each other, row by row.
+The GeoSeries above have different indices. We can either align both GeoSeries
+based on index values and project elements with the same index using
+align=True
+or ignore index and project elements based on their matching
+order using
+align=False
+:
+>>>
+s
+.
+project
+(
+s2
+,
+align
+=
+True
+)
+0         NaN
+1    0.707107
+2    0.707107
+3         NaN
+dtype: float64
+>>>
+s
+.
+project
+(
+s2
+,
+align
+=
+False
+)
+0    1.000000
+1    0.707107
+2    0.707107
+dtype: float64
+previous
+geopandas.GeoSeries.line_merge
+next
+geopandas.GeoSeries.shared_paths
+On this page
+GeoSeries.project()
+This Page
+Show Source

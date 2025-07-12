@@ -1,0 +1,151 @@
+Documentation
+API reference
+GeoSeries
+geopandas.GeoSeries.sample_points
+geopandas.GeoSeries.sample_points
+#
+GeoSeries.
+sample_points
+(
+size
+,
+method
+=
+'uniform'
+,
+seed
+=
+None
+,
+rng
+=
+None
+,
+**
+kwargs
+)
+[source]
+#
+Sample points from each geometry.
+Generate a MultiPoint per each geometry containing points sampled from the
+geometry. You can either sample randomly from a uniform distribution or use an
+advanced sampling algorithm from the
+pointpats
+package.
+For polygons, this samples within the area of the polygon. For lines,
+this samples along the length of the linestring. For multi-part
+geometries, the weights of each part are selected according to their relevant
+attribute (area for Polygons, length for LineStrings), and then points are
+sampled from each part.
+Any other geometry type (e.g. Point, GeometryCollection) is ignored, and an
+empty MultiPoint geometry is returned.
+Parameters
+:
+size
+int | array-like
+The size of the sample requested. Indicates the number of samples to draw
+from each geometry.  If an array of the same length as a GeoSeries is
+passed, it denotes the size of a sample per geometry.
+method
+str, default “uniform”
+The sampling method.
+uniform
+samples uniformly at random from a
+geometry using
+numpy.random.uniform
+. Other allowed strings
+(e.g.
+"cluster_poisson"
+) denote sampling function name from the
+pointpats.random
+module (see
+http://pysal.org/pointpats/api.html#random-distributions
+). Pointpats methods
+are implemented for (Multi)Polygons only and will return an empty MultiPoint
+for other geometry types.
+rng
+{None, int, array_like[ints], SeedSequence, BitGenerator, Generator}, optional
+A random generator or seed to initialize the numpy BitGenerator. If None, then fresh,
+unpredictable entropy will be pulled from the OS.
+**kwargs
+dict
+Options for the pointpats sampling algorithms.
+Returns
+:
+GeoSeries
+Points sampled within (or along) each geometry.
+Examples
+>>>
+from
+shapely.geometry
+import
+Polygon
+>>>
+s
+=
+geopandas
+.
+GeoSeries
+(
+...
+[
+...
+Polygon
+([(
+1
+,
+-
+1
+),
+(
+1
+,
+0
+),
+(
+0
+,
+0
+)]),
+...
+Polygon
+([(
+3
+,
+-
+1
+),
+(
+4
+,
+0
+),
+(
+3
+,
+1
+)]),
+...
+]
+...
+)
+>>>
+s
+.
+sample_points
+(
+size
+=
+10
+)
+0    MULTIPOINT ((0.1045 -0.10294), (0.35249 -0.264...
+1    MULTIPOINT ((3.03261 -0.43069), (3.10068 0.114...
+Name: sampled_points, dtype: geometry
+previous
+geopandas.GeoSeries.reverse
+next
+geopandas.GeoSeries.segmentize
+On this page
+GeoSeries.sample_points()
+This Page
+Show Source

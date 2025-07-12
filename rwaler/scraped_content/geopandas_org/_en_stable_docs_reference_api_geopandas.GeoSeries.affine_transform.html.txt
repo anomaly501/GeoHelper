@@ -1,0 +1,141 @@
+Documentation
+API reference
+GeoSeries
+geopandas.GeoSeries.affine_transform
+geopandas.GeoSeries.affine_transform
+#
+GeoSeries.
+affine_transform
+(
+matrix
+)
+[source]
+#
+Return a
+GeoSeries
+with translated geometries.
+See
+http://shapely.readthedocs.io/en/stable/manual.html#shapely.affinity.affine_transform
+for details.
+Parameters
+:
+matrix: List or tuple
+6 or 12 items for 2D or 3D transformations respectively.
+For 2D affine transformations,
+the 6 parameter matrix is
+[a,
+b,
+d,
+e,
+xoff,
+yoff]
+For 3D affine transformations,
+the 12 parameter matrix is
+[a,
+b,
+c,
+d,
+e,
+f,
+g,
+h,
+i,
+xoff,
+yoff,
+zoff]
+Examples
+>>>
+from
+shapely.geometry
+import
+Point
+,
+LineString
+,
+Polygon
+>>>
+s
+=
+geopandas
+.
+GeoSeries
+(
+...
+[
+...
+Point
+(
+1
+,
+1
+),
+...
+LineString
+([(
+1
+,
+-
+1
+),
+(
+1
+,
+0
+)]),
+...
+Polygon
+([(
+3
+,
+-
+1
+),
+(
+4
+,
+0
+),
+(
+3
+,
+1
+)]),
+...
+]
+...
+)
+>>>
+s
+0                         POINT (1 1)
+1              LINESTRING (1 -1, 1 0)
+2    POLYGON ((3 -1, 4 0, 3 1, 3 -1))
+dtype: geometry
+>>>
+s
+.
+affine_transform
+([
+2
+,
+3
+,
+2
+,
+4
+,
+5
+,
+2
+])
+0                          POINT (10 8)
+1                 LINESTRING (4 0, 7 4)
+2    POLYGON ((8 4, 13 10, 14 12, 8 4))
+dtype: geometry
+previous
+geopandas.GeoSeries.transform
+next
+geopandas.GeoSeries.rotate
+On this page
+GeoSeries.affine_transform()
+This Page
+Show Source

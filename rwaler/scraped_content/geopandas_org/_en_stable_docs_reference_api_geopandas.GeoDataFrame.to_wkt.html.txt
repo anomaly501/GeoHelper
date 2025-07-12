@@ -1,0 +1,33 @@
+Documentation
+API reference
+GeoDataFrame
+geopandas.GeoDataFrame.to_wkt
+geopandas.GeoDataFrame.to_wkt
+#
+GeoDataFrame.
+to_wkt
+(
+**
+kwargs
+)
+[source]
+#
+Encode all geometry columns in the GeoDataFrame to WKT.
+Parameters
+:
+kwargs
+Keyword args will be passed to
+shapely.to_wkt()
+.
+Returns
+:
+DataFrame
+geometry columns are encoded to WKT
+previous
+geopandas.GeoDataFrame.to_wkb
+next
+geopandas.GeoDataFrame.crs
+On this page
+GeoDataFrame.to_wkt()
+This Page
+Show Source

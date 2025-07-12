@@ -1,0 +1,177 @@
+Documentation
+API reference
+GeoSeries
+geopandas.GeoSeries.simplify_coverage
+geopandas.GeoSeries.simplify_coverage
+#
+GeoSeries.
+simplify_coverage
+(
+tolerance
+,
+*
+,
+simplify_boundary
+=
+True
+)
+[source]
+#
+Return a
+GeoSeries
+containing a simplified representation of
+polygonal coverage.
+Assumes that the
+GeoSeries
+forms a polygonal coverage. Under this
+assumption, the method simplifies the edges using the Visvalingam-Whyatt
+algorithm, while preserving a valid coverage. In the most simplified case,
+polygons are reduced to triangles.
+A
+GeoSeries
+of valid polygons is considered a coverage if the polygons are:
+Non-overlapping
+- polygons do not overlap (their interiors do not
+intersect)
+Edge-Matched
+- vertices along shared edges are identical
+The method allows simplification of all edges including the outer boundaries of
+the coverage or simplification of only the inner (shared) edges.
+If there are other geometry types than Polygons or MultiPolygons present, the
+method will raise an error.
+If the geometry is polygonal but does not form a valid coverage due to overlaps,
+it will be simplified but it may result in invalid coverage topology.
+Requires Shapely >= 2.1.
+Added in version 1.1.0.
+Parameters
+:
+tolerance
+float
+The degree of simplification roughly equal to the square root of the area
+of triangles that will be removed. It has the same units
+as the coordinate reference system of the GeoSeries.
+For example, using
+tolerance=100
+in a projected CRS with meters
+as units means a distance of 100 meters in reality.
+simplify_boundary: bool (default True)
+By default (True), simplifies both internal edges of the coverage as well
+as its boundary. If set to False, only simplifies internal edges.
+See also
+simplify
+simplification of individual geometries
+Examples
+>>>
+from
+shapely.geometry
+import
+Polygon
+>>>
+s
+=
+geopandas
+.
+GeoSeries
+(
+...
+[
+...
+Polygon
+([(
+0
+,
+0
+),
+(
+1
+,
+1.1
+),
+(
+2
+,
+0
+),
+(
+1.5
+,
+1
+),
+(
+2
+,
+2
+),
+(
+0
+,
+2
+)]),
+...
+Polygon
+([(
+2
+,
+0
+),
+(
+4
+,
+0
+),
+(
+4
+,
+2
+),
+(
+2
+,
+2
+),
+(
+1.5
+,
+1
+)]),
+...
+]
+...
+)
+>>>
+s
+0    POLYGON ((0 0, 1 1.1, 2 0, 1.5 1, 2 2, 0 2, 0 0))
+1           POLYGON ((2 0, 4 0, 4 2, 2 2, 1.5 1, 2 0))
+dtype: geometry
+>>>
+s
+.
+simplify_coverage
+(
+1
+)
+0         POLYGON ((2 0, 2 2, 0 2, 2 0))
+1    POLYGON ((2 0, 4 0, 4 2, 2 2, 2 0))
+dtype: geometry
+>>>
+s
+.
+simplify_coverage
+(
+1
+,
+simplify_boundary
+=
+False
+)
+0    POLYGON ((2 0, 2 2, 0 2, 0 0, 1 1.1, 2 0))
+1           POLYGON ((2 0, 4 0, 4 2, 2 2, 2 0))
+dtype: geometry
+previous
+geopandas.GeoSeries.simplify
+next
+geopandas.GeoSeries.snap
+On this page
+GeoSeries.simplify_coverage()
+This Page
+Show Source

@@ -1,0 +1,244 @@
+Documentation
+API reference
+GeoDataFrame
+geopandas.GeoDataFrame.dissolve
+geopandas.GeoDataFrame.dissolve
+#
+GeoDataFrame.
+dissolve
+(
+by
+=
+None
+,
+aggfunc
+=
+'first'
+,
+as_index
+=
+True
+,
+level
+=
+None
+,
+sort
+=
+True
+,
+observed
+=
+False
+,
+dropna
+=
+True
+,
+method
+=
+'unary'
+,
+grid_size
+=
+None
+,
+**
+kwargs
+)
+[source]
+#
+Dissolve geometries within
+groupby
+into single observation.
+This is accomplished by applying the
+union_all
+method
+to all geometries within a groupself.
+Observations associated with each
+groupby
+group will be aggregated
+using the
+aggfunc
+.
+Parameters
+:
+by
+str or list-like, default None
+Column(s) whose values define the groups to be dissolved. If None,
+the entire GeoDataFrame is considered as a single group. If a list-like
+object is provided, the values in the list are treated as categorical
+labels, and polygons will be combined based on the equality of
+these categorical labels.
+aggfunc
+function or string, default “first”
+Aggregation function for manipulation of data associated
+with each group. Passed to pandas
+groupby.agg
+method.
+Accepted combinations are:
+function
+string function name
+list of functions and/or function names, e.g. [np.sum, ‘mean’]
+dict of axis labels -> functions, function names or list of such.
+as_index
+boolean, default True
+If true, groupby columns become index of result.
+level
+int or str or sequence of int or sequence of str, default None
+If the axis is a MultiIndex (hierarchical), group by a
+particular level or levels.
+sort
+bool, default True
+Sort group keys. Get better performance by turning this off.
+Note this does not influence the order of observations within
+each group. Groupby preserves the order of rows within each group.
+observed
+bool, default False
+This only applies if any of the groupers are Categoricals.
+If True: only show observed values for categorical groupers.
+If False: show all values for categorical groupers.
+dropna
+bool, default True
+If True, and if group keys contain NA values, NA values
+together with row/column will be dropped. If False, NA
+values will also be treated as the key in groups.
+method
+str (default
+"unary"
+)
+The method to use for the union. Options are:
+"unary"
+: use the unary union algorithm. This option is the most robust
+but can be slow for large numbers of geometries (default).
+"coverage"
+: use the coverage union algorithm. This option is optimized
+for non-overlapping polygons and can be significantly faster than the
+unary union algorithm. However, it can produce invalid geometries if the
+polygons overlap.
+"disjoint_subset:
+: use the disjoint subset union algorithm. This
+option is optimized for inputs that can be divided into subsets that do
+not intersect. If there is only one such subset, performance can be
+expected to be worse than
+"unary"
+.  Requires Shapely >= 2.1.
+grid_size
+float, default None
+When grid size is specified, a fixed-precision space is used to perform the
+union operations. This can be useful when unioning geometries that are not
+perfectly snapped or to avoid geometries not being unioned because of
+robustness issues
+.
+The inputs are first snapped to a grid of the given size. When a line
+segment of a geometry is within tolerance off a vertex of another geometry,
+this vertex will be inserted in the line segment. Finally, the result
+vertices are computed on the same grid. Is only supported for
+method
+"unary"
+. If None, the highest precision of the inputs will be used.
+Defaults to None.
+Added in version 1.1.0.
+**kwargs
+Keyword arguments to be passed to the pandas
+DataFrameGroupby.agg
+method
+which is used by
+dissolve
+. In particular,
+numeric_only
+may be
+supplied, which will be required in pandas 2.0 for certain aggfuncs.
+Added in version 0.13.0.
+Returns
+:
+GeoDataFrame
+See also
+GeoDataFrame.explode
+explode multi-part geometries into single geometries
+Examples
+>>>
+from
+shapely.geometry
+import
+Point
+>>>
+d
+=
+{
+...
+"col1"
+:
+[
+"name1"
+,
+"name2"
+,
+"name1"
+],
+...
+"geometry"
+:
+[
+Point
+(
+1
+,
+2
+),
+Point
+(
+2
+,
+1
+),
+Point
+(
+0
+,
+1
+)],
+...
+}
+>>>
+gdf
+=
+geopandas
+.
+GeoDataFrame
+(
+d
+,
+crs
+=
+4326
+)
+>>>
+gdf
+col1     geometry
+0  name1  POINT (1 2)
+1  name2  POINT (2 1)
+2  name1  POINT (0 1)
+>>>
+dissolved
+=
+gdf
+.
+dissolve
+(
+'col1'
+)
+>>>
+dissolved
+geometry
+col1
+name1  MULTIPOINT ((0 1), (1 2))
+name2                POINT (2 1)
+previous
+geopandas.GeoDataFrame.active_geometry_name
+next
+geopandas.GeoDataFrame.explode
+On this page
+GeoDataFrame.dissolve()
+This Page
+Show Source

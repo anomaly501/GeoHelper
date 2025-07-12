@@ -1,0 +1,146 @@
+Documentation
+API reference
+GeoSeries
+geopandas.GeoSeries.from_wkb
+geopandas.GeoSeries.from_wkb
+#
+classmethod
+GeoSeries.
+from_wkb
+(
+data
+,
+index
+=
+None
+,
+crs
+=
+None
+,
+on_invalid
+=
+'raise'
+,
+**
+kwargs
+)
+[source]
+#
+Alternate constructor to create a
+GeoSeries
+from a list or array of WKB objects.
+Parameters
+:
+data
+array-like or Series
+Series, list or array of WKB objects
+index
+array-like or Index
+The index for the GeoSeries.
+crs
+value, optional
+Coordinate Reference System of the geometry objects. Can be anything
+accepted by
+pyproj.CRS.from_user_input()
+,
+such as an authority string (eg “EPSG:4326”) or a WKT string.
+on_invalid: {“raise”, “warn”, “ignore”}, default “raise”
+raise: an exception will be raised if a WKB input geometry is invalid.
+warn: a warning will be raised and invalid WKB geometries will be returned
+as None.
+ignore: invalid WKB geometries will be returned as None without a warning.
+fix: an effort is made to fix invalid input geometries (e.g. close
+unclosed rings). If this is not possible, they are returned as
+None
+without a warning. Requires GEOS >= 3.11 and shapely >= 2.1.
+kwargs
+Additional arguments passed to the Series constructor,
+e.g.
+name
+.
+Returns
+:
+GeoSeries
+See also
+GeoSeries.from_wkt
+Examples
+>>>
+wkbs
+=
+[
+...
+(
+...
+b
+"
+\x01\x01\x00\x00\x00\x00\x00\x00\x00
+"
+...
+b
+"
+\x00\x00\xf0
+?
+\x00\x00\x00\x00\x00\x00\xf0
+?"
+...
+),
+...
+(
+...
+b
+"
+\x01\x01\x00\x00\x00\x00\x00\x00\x00
+"
+...
+b
+"
+\x00\x00\x00
+@
+\x00\x00\x00\x00\x00\x00\x00
+@"
+...
+),
+...
+(
+...
+b
+"
+\x01\x01\x00\x00\x00\x00\x00\x00\x00\x00
+"
+...
+b
+"
+\x00\x08
+@
+\x00\x00\x00\x00\x00\x00\x08
+@"
+...
+),
+...
+]
+>>>
+s
+=
+geopandas
+.
+GeoSeries
+.
+from_wkb
+(
+wkbs
+)
+>>>
+s
+0    POINT (1 1)
+1    POINT (2 2)
+2    POINT (3 3)
+dtype: geometry
+previous
+geopandas.GeoSeries.from_file
+next
+geopandas.GeoSeries.from_wkt
+On this page
+GeoSeries.from_wkb()
+This Page
+Show Source

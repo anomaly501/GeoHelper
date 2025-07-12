@@ -1,0 +1,41 @@
+Documentation
+Advanced guide
+Advanced guide
+#
+The advanced guide covers advanced usage of GeoPandas. Each page focuses on a single
+topic and outlines how it is implemented in GeoPandas, with reproducible examples.
+If you don’t know anything about GeoPandas, start with the
+Introduction to
+GeoPandas
+.
+Basic topics can be found in the
+User guide
+and further
+specification in the
+API reference
+.
+Note
+This section is currently work in progress. See the available pages below.
+Spatial indexing
+R-tree principle
+Querying the index
+Missing and empty geometries
+Changes since GeoPandas v0.6.0
+Re-projecting using GDAL with Rasterio and Fiona
+Fiona example
+Rasterio example
+Migration from PyGEOS geometry backend to Shapely 2.0
+Migration period
+How to prepare your code for transition
+Migration from the Fiona to the Pyogrio read/write engine
+Write an attribute table to a file
+No support for
+schema
+parameter to write files
+Writing EMPTY geometries
+previous
+How to…
+next
+Spatial indexing
+This Page
+Show Source

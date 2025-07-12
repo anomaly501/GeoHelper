@@ -1,0 +1,150 @@
+Documentation
+API reference
+GeoDataFrame
+geopandas.GeoDataFrame.to_json
+geopandas.GeoDataFrame.to_json
+#
+GeoDataFrame.
+to_json
+(
+na
+=
+'null'
+,
+show_bbox
+=
+False
+,
+drop_id
+=
+False
+,
+to_wgs84
+=
+False
+,
+**
+kwargs
+)
+[source]
+#
+Return a GeoJSON representation of the
+GeoDataFrame
+as a string.
+Parameters
+:
+na
+{‘null’, ‘drop’, ‘keep’}, default ‘null’
+Indicates how to output missing (NaN) values in the GeoDataFrame.
+See below.
+show_bbox
+bool, optional, default: False
+Include bbox (bounds) in the geojson
+drop_id
+bool, default: False
+Whether to retain the index of the GeoDataFrame as the id property
+in the generated GeoJSON. Default is False, but may want True
+if the index is just arbitrary row numbers.
+to_wgs84: bool, optional, default: False
+If the CRS is set on the active geometry column it is exported as
+WGS84 (EPSG:4326) to meet the
+2016 GeoJSON specification
+.
+Set to True to force re-projection and set to False to ignore CRS. False by
+default.
+See also
+GeoDataFrame.to_file
+write GeoDataFrame to file
+Notes
+The remaining
+kwargs
+are passed to json.dumps().
+Missing (NaN) values in the GeoDataFrame can be represented as follows:
+null
+: output the missing entries as JSON null.
+drop
+: remove the property from the feature. This applies to each
+feature individually so that features may have different properties.
+keep
+: output the missing entries as NaN.
+If the GeoDataFrame has a defined CRS, its definition will be included
+in the output unless it is equal to WGS84 (default GeoJSON CRS) or not
+possible to represent in the URN OGC format, or unless
+to_wgs84=True
+is specified.
+Examples
+>>>
+from
+shapely.geometry
+import
+Point
+>>>
+d
+=
+{
+'col1'
+:
+[
+'name1'
+,
+'name2'
+],
+'geometry'
+:
+[
+Point
+(
+1
+,
+2
+),
+Point
+(
+2
+,
+1
+)]}
+>>>
+gdf
+=
+geopandas
+.
+GeoDataFrame
+(
+d
+,
+crs
+=
+"EPSG:3857"
+)
+>>>
+gdf
+col1     geometry
+0  name1  POINT (1 2)
+1  name2  POINT (2 1)
+>>>
+gdf
+.
+to_json
+()
+'{"type": "FeatureCollection", "features": [{"id": "0", "type": "Feature", "properties": {"col1": "name1"}, "geometry": {"type": "Point", "coordinates": [1.0, 2.0]}}, {"id": "1", "type": "Feature", "properties": {"col1": "name2"}, "geometry": {"type": "Point", "coordinates": [2.0, 1.0]}}], "crs": {"type": "name", "properties": {"name": "urn:ogc:def:crs:EPSG::3857"}}}'
+Alternatively, you can write GeoJSON to file:
+>>>
+gdf
+.
+to_file
+(
+path
+,
+driver
+=
+"GeoJSON"
+)
+previous
+geopandas.GeoDataFrame.to_file
+next
+geopandas.GeoDataFrame.to_geo_dict
+On this page
+GeoDataFrame.to_json()
+This Page
+Show Source

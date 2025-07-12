@@ -1,0 +1,86 @@
+Documentation
+API reference
+GeoSeries
+geopandas.GeoSeries.intersection_all
+geopandas.GeoSeries.intersection_all
+#
+GeoSeries.
+intersection_all
+(
+)
+[source]
+#
+Return a geometry containing the intersection of all geometries in
+the
+GeoSeries
+.
+This method ignores None values when other geometries are present.
+If all elements of the GeoSeries are None, an empty GeometryCollection is
+returned.
+Examples
+>>>
+from
+shapely.geometry
+import
+box
+>>>
+s
+=
+geopandas
+.
+GeoSeries
+(
+...
+[
+box
+(
+0
+,
+0
+,
+2
+,
+2
+),
+box
+(
+1
+,
+1
+,
+3
+,
+3
+),
+box
+(
+0
+,
+0
+,
+1.5
+,
+1.5
+)]
+...
+)
+>>>
+s
+0              POLYGON ((2 0, 2 2, 0 2, 0 0, 2 0))
+1              POLYGON ((3 1, 3 3, 1 3, 1 1, 3 1))
+2    POLYGON ((1.5 0, 1.5 1.5, 0 1.5, 0 0, 1.5 0))
+dtype: geometry
+>>>
+s
+.
+intersection_all
+()
+<POLYGON ((1 1, 1 1.5, 1.5 1.5, 1.5 1, 1 1))>
+previous
+geopandas.GeoSeries.explode
+next
+geopandas.GeoSeries.polygonize
+On this page
+GeoSeries.intersection_all()
+This Page
+Show Source

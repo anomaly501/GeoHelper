@@ -1,0 +1,67 @@
+Documentation
+User guide
+User guide
+#
+The user guide covers different parts of basic usage of GeoPandas. Each page focuses on a single topic and outlines how it is implemented in GeoPandas, with reproducible examples.
+If you don’t know anything about GeoPandas, start with the
+Introduction to GeoPandas
+.
+Advanced topics can be found in the
+Advanced Guide
+and further specification in the
+API Reference
+.
+Data structures
+GeoSeries
+GeoDataFrame
+Display options
+Reading and writing files
+Reading spatial data
+Writing spatial data
+Spatial databases
+Apache Parquet and Feather file formats
+Indexing and selecting data
+Making maps and plots
+Choropleth maps
+Maps with layers
+Pandas plots
+Other resources
+Interactive mapping
+Projections
+Coordinate reference systems
+What is the best format to store the CRS information?
+Setting a projection
+Re-projecting
+Projection for multiple geometry columns
+Upgrading to GeoPandas 0.7 with pyproj > 2.2 and PROJ > 6
+Geometric manipulations
+Constructive methods
+Affine transformations
+Examples of geometric manipulations
+Set operations with overlay
+The different overlay operations
+Overlay groceries example
+keep_geom_type keyword
+More examples
+Aggregation with dissolve
+dissolve()
+Example
+Dissolve arguments
+Merging data
+Appending
+Attribute joins
+Spatial joins
+Geocoding
+Sampling points
+Import Packages
+Sampling random points
+Variable number of points
+Sampling from more complicated point pattern processes
+How to...
+Drop duplicate geometry in all situations
+previous
+Documentation
+next
+Data structures
+This Page
+Show Source
